@@ -42,8 +42,6 @@ Opensearch does not currently provide packages for deb/apt installs. A "manual" 
 
 ---
 
-
-
 The below code block will do the following:
 
 * Create a user that the opensearch service will run as
