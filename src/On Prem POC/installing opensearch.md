@@ -81,14 +81,14 @@ sudo -u opensearch touch /var/log/opensearch/graylog.log
 
 ### Create System Service
 
-The code blocks below can be copy/pasted into a terminal.
-
 Elevate as root if not already running as root
 
 ```sh
 sudo su
 
 ```
+
+The code block below can be copy/pasted into a terminal.
 
 ```sh
 # create opensearch service
@@ -147,6 +147,8 @@ sudo su
 
 Create Config File
 
+The code block below can be copy/pasted into a terminal.
+
 ```sh
 cp /graylog/opensearch/config/opensearch.yml /graylog/opensearch/config/opensearch.yml.bak
 cat > /graylog/opensearch/config/opensearch.yml <<EOF
@@ -172,10 +174,14 @@ Additional Configurations, Set Opensearch Memory/Heap Limit, kernel parameters.
 
 Set opensearch heap size
 
+The code block below can be copy/pasted into a terminal.
+
 ```sh
 echo -n "Enter number of GB to set heap size to (number only): " && tmpheap=$(head -1 </dev/stdin)
 
 ```
+
+The code block below can be copy/pasted into a terminal.
 
 ```sh
 # open search java heap sizing (first command is min, second is max)
