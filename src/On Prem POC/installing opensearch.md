@@ -198,3 +198,31 @@ sudo systemctl enable opensearch.service
 sudo systemctl start opensearch.service
 
 ```
+
+### Verify Completion
+
+```sh
+curl localhost:9200
+```
+
+Should return something like:
+
+```json
+{
+  "name" : "<servername>",
+  "cluster_name" : "graylog",
+  "cluster_uuid" : "<uuid>",
+  "version" : {
+    "distribution" : "opensearch",
+    "number" : "1.3.4",
+    "build_type" : "tar",
+    "build_hash" : "c0a5b6be3ce66e8dbbcae3eb5ebc977b98f6e648",
+    "build_date" : "2022-07-13T17:26:48.372041Z",
+    "build_snapshot" : false,
+    "lucene_version" : "8.10.1",
+    "minimum_wire_compatibility_version" : "6.8.0",
+    "minimum_index_compatibility_version" : "6.0.0-beta1"
+  },
+  "tagline" : "The OpenSearch Project: https://opensearch.org/"
+}
+```
