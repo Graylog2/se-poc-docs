@@ -31,7 +31,7 @@ sudo apt install openjdk-11-jdk
 ---
 ⚠️ **NOTE**
 
-Graylog-server is currently not compatible with Opensearch 2.x. We must use 1.x
+Graylog-server 4.x is currently **not** compatible with Opensearch 2.x. We must use 1.x
 
 ---
 
