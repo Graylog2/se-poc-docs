@@ -49,3 +49,19 @@ sudo systemctl restart mongod.service
 sudo systemctl --type=service --state=active | grep mongod
 
 ```
+
+## Verify Completion
+
+```sh
+mongo --eval "db.version()"
+```
+
+Should return something like:
+
+```
+MongoDB shell version v4.4.15
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("<uuid>") }
+MongoDB server version: 4.4.15
+4.4.15
+```
