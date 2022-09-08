@@ -31,6 +31,8 @@ sudo apt update && sudo apt install graylog-server graylog-enterprise-plugins gr
 
 You will be prompted to input a password. This will set the password used by the default ‘admin’ user account.
 
+The code block below can be copy/pasted into a terminal.
+
 ```sh
 sudo cp /etc/graylog/server/server.conf server.conf.bak
 echo -n "Enter Password: " && tmppw=$(head -1 </dev/stdin | tr -d '\n' | sha256sum | cut -d" " -f1) && sudo sed -i "s/root_password_sha2 =.*/root_password_sha2 = $tmppw/g" /etc/graylog/server/server.conf
@@ -38,6 +40,8 @@ echo -n "Enter Password: " && tmppw=$(head -1 </dev/stdin | tr -d '\n' | sha256s
 ```
 
 ### Set password secret (this is used to encrypt passwords for local graylog users)
+
+The code block below can be copy/pasted into a terminal.
 
 ```sh
 tmppw=$(openssl rand -hex 32)
@@ -48,12 +52,16 @@ tmppw=abc
 
 ### Bind HTTP server to listen for external connections. Otherwise the Graylog server will only be accessible form the server itself.
 
+The code block below can be copy/pasted into a terminal.
+
 ```sh
 sudo sed -i 's/#http_bind_address = 127.0.0.1.*/http_bind_address = 0.0.0.0:9000/g' /etc/graylog/server/server.conf
 
 ```
 
 ### Configure Opensearch server address
+
+The code block below can be copy/pasted into a terminal.
 
 ```sh
 echo -n "Enter IP of Opensearch Server: " && tmpip=$(head -1 </dev/stdin) && sudo sed -i "s/#elasticsearch_hosts = .*/elasticsearch_hosts = http\:\/\/$tmpip\:9200/g" /etc/graylog/server/server.conf
