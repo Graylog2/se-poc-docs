@@ -199,7 +199,7 @@ sudo systemctl start opensearch.service
 
 ```
 
-### Verify Completion
+## Verify Completion
 
 ```sh
 curl localhost:9200
