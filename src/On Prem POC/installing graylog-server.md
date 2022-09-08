@@ -93,3 +93,15 @@ sudo systemctl --type=service --state=active | grep graylog
 
 ```
 
+## Verify Completion
+
+```sh
+curl localhost:9000/api/
+```
+
+Should return something like:
+
+```
+{"cluster_id":"<clusterid>","node_id":"<nodeid>","version":"<version>"}
+```
+
