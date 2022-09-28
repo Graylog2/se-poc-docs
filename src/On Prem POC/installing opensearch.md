@@ -172,7 +172,14 @@ Exit su via `exit`.
 
 Additional Configurations, Set Opensearch Memory/Heap Limit, kernel parameters.
 
-Set opensearch heap size
+Set opensearch heap size. Heap size should be set to **half of the amount of RAM of the server**. For example, if the server has 32GB of ram, set the heap to 16GB.
+
+---
+⚠️ **NOTE**
+
+Heap size should not exceep 31GB.
+
+---
 
 The code block below can be copy/pasted into a terminal.
 
