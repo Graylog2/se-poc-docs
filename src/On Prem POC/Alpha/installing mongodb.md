@@ -37,8 +37,8 @@ The code block below can be copy/pasted into a terminal.
 
 ```sh
 # Install
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 9DA31620334BD75D9DCB49F368818C72E52529D4
-echo "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.0.list
+wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | sudo apt-key add -
+echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/5.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list
 sudo apt update
 sudo apt install -y mongodb-org
 
@@ -59,9 +59,9 @@ mongo --eval "db.version()"
 Should return something like:
 
 ```
-MongoDB shell version v4.4.15
+MongoDB shell version v5.0.13
 connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
 Implicit session: session { "id" : UUID("<uuid>") }
-MongoDB server version: 4.4.15
-4.4.15
+MongoDB server version: 5.0.13
+5.0.13
 ```
