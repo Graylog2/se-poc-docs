@@ -29,9 +29,9 @@ sudo apt update && sudo apt install graylog-server graylog-enterprise-plugins gr
 ## Configure
 ### Set Admin Password
 
-You will be prompted to input a password. This will set the password used by the default ‘admin’ user account.
-
 The code block below can be copy/pasted into a terminal.
+
+After copy and pasting the below code block, you will be prompted to input a password. This will set the password used by the default ‘admin’ user account.
 
 ```sh
 sudo cp /etc/graylog/server/server.conf server.conf.bak
