@@ -11,6 +11,8 @@ The following steps are completed on the server/instance that will be used for M
 
 This page will provide instructions for how to install MongoDB.
 
+To get started, use ssh to connect to your linux server, so that you can paste the commands into the terminal window.
+
 ## Housekeeping
 
 The code block below can be copy/pasted into a terminal.

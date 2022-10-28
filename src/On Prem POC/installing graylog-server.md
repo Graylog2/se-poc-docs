@@ -11,6 +11,8 @@ The following steps are completed on the server/instance that will be used for M
 
 This page will provide instructions for how to install Graylog.
 
+To get started, use ssh to connect to your linux server, so that you can paste the commands into the terminal window.
+
 ## Housekeeping
 
 Assumes housekeeping steps from [Installing MongoDB](installing%20mongodb.md#housekeeping) have been completed.
