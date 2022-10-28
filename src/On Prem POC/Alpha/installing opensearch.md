@@ -29,13 +29,6 @@ sudo apt install openjdk-11-jdk
 ### Install Opensearch via .tar.gz
 
 ---
-⚠️ **NOTE**
-
-Graylog-server 4.x is currently **not** compatible with Opensearch 2.x. We must use 1.x
-
----
-
----
 🗒️ **NOTE**
 
 Opensearch does not currently provide packages for deb/apt installs. A "manual" install is required.
@@ -58,15 +51,21 @@ The code block below can be copy/pasted into a terminal.
 sudo adduser --system --disabled-password --disabled-login --home /var/empty --no-create-home --quiet --force-badname --group opensearch
 
 # download
-wget https://artifacts.opensearch.org/releases/bundle/opensearch/1.3.6/opensearch-1.3.6-linux-x64.tar.gz
+wget https://artifacts.opensearch.org/releases/bundle/opensearch/2.3.0/opensearch-2.3.0-linux-x64.tar.gz
 
 # create directories
 sudo mkdir -p /graylog/opensearch/data
 sudo mkdir /var/log/opensearch
 
 # extract content from tar and move to install directory
-sudo tar -zxf opensearch-1.3.6-linux-x64.tar.gz
-sudo mv opensearch-1.3.6/* /graylog/opensearch/
+sudo tar -zxf opensearch-2.3.0-linux-x64.tar.gz
+sudo mv opensearch-2.3.0/* /graylog/opensearch/
+
+# remove empty directory
+sudo rm -r opensearch-2.3.0
+
+# cleanup download .tar.gz
+rm -f opensearch-2.3.0-linux-x64.tar.gz
 
 # set permissions
 sudo chown -R opensearch:opensearch /graylog/opensearch/
@@ -207,6 +206,13 @@ sudo systemctl start opensearch.service
 ```
 
 ## Verify Completion
+
+---
+⚠️ **NOTE**
+
+Opensearch may take a few seconds to start up. If you receive the following message, `curl: (7) Failed to connect to localhost port 9200: Connection refused`, wait a few seconds and try again.
+
+---
 
 ```sh
 curl localhost:9200
