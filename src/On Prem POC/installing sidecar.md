@@ -6,6 +6,17 @@ This page will provide instructions for how to install [Graylog Sidecar](https:/
 
 Sidecar is used to collect logs from devices, and is installed on any endpoint you wish to collect logs from.
 
+## Prerequisites
+
+### API Token
+Before you can use Sidecar, you must first generate an API token that Sidecar can use to securely communicate with your graylog cluster.
+
+See https://docs.graylog.org/docs/sidecar#stepbystep-guide
+
+### Beats Input
+
+Make sure you have a beats input created and started before continuing.
+
 ## Download
 
 Download the latest release via https://github.com/Graylog2/collector-sidecar/releases/latest .
