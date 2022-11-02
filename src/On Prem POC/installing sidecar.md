@@ -4,6 +4,8 @@
 
 This page will provide instructions for how to install [Graylog Sidecar](https://docs.graylog.org/docs/sidecar).
 
+Sidecar is used to collect logs from devices, and is installed on any endpoint you wish to collect logs from.
+
 ## Download
 
 Download the latest release via https://github.com/Graylog2/collector-sidecar/releases/latest .
@@ -14,7 +16,9 @@ For linux choose the install applicable to your distribution (e.g. deb based or 
 
 ## Install
 
-Graylog sidecar can be installed by executing the download file, such as the `.exe`. You will be prompted to input your Graylog API address and your API key.
+Install Sidecar on any device(s) you want to collect logs from and forward to your graylog cluster.
+
+Sidecar can be installed by executing the download file, such as the `.exe`. You will be prompted to input your Graylog API address and your API key.
 
 Your graylog API will be the same URL as your graylog cluster, followed by `/api`.
 
