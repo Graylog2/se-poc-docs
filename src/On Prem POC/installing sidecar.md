@@ -48,10 +48,12 @@ You can also install Graylog Sidecar silently and/or an automated installation m
 
 Example install script:
 
-Besure to update the `SERVERURL` and `APITOKEN` arguments with the values applicable to your install and environment.
+NOTE: update `graylog_sidecar_installer.exe` with the name of the downloaded sidecar installer file.
+
+NOTE: update the `SERVERURL` and `APITOKEN` arguments with the values applicable to your install and environment.
 
 ```
-"%~dp0graylog_sidecar_installer_1.1.0-1.exe" /S -SERVERURL=https://GRAYLOGSERVER.DOMAIN.COM/api -APITOKEN=YOURAPITOKEN
+"%~dp0graylog_sidecar_installer.exe" /S -SERVERURL=https://GRAYLOGSERVER.DOMAIN.COM/api -APITOKEN=YOURAPITOKEN
 "C:\Program Files\Graylog\sidecar\graylog-sidecar.exe" -service install
 "C:\Program Files\Graylog\sidecar\graylog-sidecar.exe" -service start
 ```
