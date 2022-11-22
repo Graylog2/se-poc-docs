@@ -39,68 +39,78 @@ Note: if you don't have sysmon installed, you can remove line `- name: Microsoft
 fields_under_root: true
 fields.collector_node_id: ${sidecar.nodeName}
 fields.gl2_source_collector: ${sidecar.nodeId}
+
+# NOTE:
+#   replace servername.domain.tld
+#     with the name (or IP Address) of your graylog server.
+# 
 output.logstash:
-   hosts: ["graylog.domain.tld:5044"]
+   hosts: ["servername.domain.tld:5044"]
 path:
   data: C:\Program Files\Graylog\sidecar\cache\winlogbeat\data
   logs: C:\Program Files\Graylog\sidecar\logs
 tags:
  - windows
-# A little less noisy
+
 winlogbeat.event_logs:
   - name: Application
     level: critical, error, warning
     ignore_older: 48h
+
+  # Account login: Successful, Failed, logged off, loggon using explicit credentials
   - name: Security
-    processors:
-        - drop_event.when.not.or:
-            - equals.event_id: 129
-            - equals.event_id: 141
-            - equals.event_id: 1102
-            - equals.event_id: 4648
-            - equals.event_id: 4657
-            - equals.event_id: 4688
-            - equals.event_id: 4697
-            - equals.event_id: 4698
-            - equals.event_id: 4720
-            - equals.event_id: 4738
-            - equals.event_id: 4767
-            - equals.event_id: 4728
-            - equals.event_id: 4732
-            - equals.event_id: 4634
-            - equals.event_id: 4735
-            - equals.event_id: 4740
-            - equals.event_id: 4756
-            - equals.event_id: 5158
-    level: critical, error, warning, information
+    event_id: 4616, 4624, 4625, 4634, 4647, 4648
+    level: info
     ignore_older: 48h
+    provider:
+      - Microsoft-Windows-Security-Auditing
+
+# Active Directory Monitoring: User account created, A user account was enabled, An attempt was made to change the password of an account, A user account was disabled,A user account was changed, A user account was locked out,A user account was unlocked
+  - name: Security
+    event_id:  4720-4727
+    level: info
+    ignore_older: 48h
+    provider:
+      - Microsoft-Windows-Security-Auditing
+
+# Active directory Monitoring Group:A user was added to a privileged global group, 	A user was added to a privileged local group, A user was added to a privileged universal group, A privileged local group was modified, A privileged global group was modified, A privileged universal group was modified
+  - name: Security
+    event_id:   4728, 4729, 4730, 4731, 4732, 4733, 4734, 4735, 4737, 4738, 4740-4743, 4754-4758, 4764, 4767, 4769
+    level: info
+    ignore_older: 48h
+    provider:
+      - Microsoft-Windows-Security-Auditing
+
+ # Active directory Kerberos:A Kerberos authentication ticket request failed
+  - name: Security
+    event_id:   4770-4773
+    level: info
+    ignore_older: 48h
+    provider:
+      - Microsoft-Windows-Security-Auditing
+   
+   # Active directory RDP: 
+  - name: Security
+    event_id:  1024, 1100, 1101, 1102, 1103, 1104, 1149, 98, 131, 21, 22, 25 
+    level: info
+    ignore_older: 48h
+    provider:
+      - Microsoft-Windows-Security-Auditing
+
   - name: System
-    processors:
-        - drop_event.when.not.or:
-            - equals.event_id: 129
-            - equals.event_id: 1022
-            - equals.event_id: 1033
-            - equals.event_id: 1034
-            - equals.event_id: 4624
-            - equals.event_id: 4625
-            - equals.event_id: 4633
-            - equals.event_id: 4719
-            - equals.event_id: 4738
-            - equals.event_id: 7000
-            - equals.event_id: 7022
-            - equals.event_id: 7024
-            - equals.event_id: 7031
-            - equals.event_id: 7034-7036
-            - equals.event_id: 7040
-            - equals.event_id: 7045
     level: critical, error, warning
     ignore_older: 48h
   - name: Microsoft-Windows-Sysmon/Operational
+    ignore_older: 48h
   - name: Windows PowerShell
-    event_id: 400, 403, 600, 800
+    level: critical, error, warning
+    ignore_older: 48h
   - name: Microsoft-Windows-PowerShell/Operational
-    event_id: 4103, 4104, 4105, 4106
+    level: critical, error, warning
+    ignore_older: 48h
   - name: Microsoft-Windows-Windows Defender/Operational
+    level: critical, error, warning
+    ignore_older: 48h
 ```
 
 ## Assign Configuration to Sidecar
