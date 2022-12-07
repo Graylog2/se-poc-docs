@@ -11,8 +11,6 @@ The following steps are completed on the server/instance that will be used for O
 
 This page will provide instructions for how to install and configure a single node opensearch cluster.
 
-To get started, use ssh to connect to your linux server, so that you can paste the commands into the terminal window.
-
 ## Housekeeping
 
 The code block below can be copy/pasted into a terminal.
@@ -29,13 +27,6 @@ sudo apt install openjdk-11-jdk
 ## Install
 
 ### Install Opensearch via .tar.gz
-
----
-⚠️ **NOTE**
-
-Graylog-server 4.x is currently **not** compatible with Opensearch 2.x. We must use 1.x
-
----
 
 ---
 🗒️ **NOTE**
@@ -60,15 +51,21 @@ The code block below can be copy/pasted into a terminal.
 sudo adduser --system --disabled-password --disabled-login --home /var/empty --no-create-home --quiet --force-badname --group opensearch
 
 # download
-wget https://artifacts.opensearch.org/releases/bundle/opensearch/1.3.4/opensearch-1.3.4-linux-x64.tar.gz
+wget https://artifacts.opensearch.org/releases/bundle/opensearch/2.4.0/opensearch-2.4.0-linux-x64.tar.gz
 
 # create directories
 sudo mkdir -p /graylog/opensearch/data
 sudo mkdir /var/log/opensearch
 
 # extract content from tar and move to install directory
-sudo tar -zxf opensearch-1.3.4-linux-x64.tar.gz
-sudo mv opensearch-1.3.4/* /graylog/opensearch/
+sudo tar -zxf opensearch-2.4.0-linux-x64.tar.gz
+sudo mv opensearch-2.4.0/* /graylog/opensearch/
+
+# remove empty directory
+sudo rm -r opensearch-2.4.0
+
+# cleanup download .tar.gz
+rm -f opensearch-2.4.0-linux-x64.tar.gz
 
 # set permissions
 sudo chown -R opensearch:opensearch /graylog/opensearch/
@@ -210,6 +207,13 @@ sudo systemctl start opensearch.service
 
 ## Verify Completion
 
+---
+⚠️ **NOTE**
+
+Opensearch may take a few seconds to start up. If you receive the following message, `curl: (7) Failed to connect to localhost port 9200: Connection refused`, wait a few seconds and try again.
+
+---
+
 ```sh
 curl localhost:9200
 ```
@@ -223,10 +227,10 @@ Should return something like:
   "cluster_uuid" : "<uuid>",
   "version" : {
     "distribution" : "opensearch",
-    "number" : "1.3.4",
+    "number" : "2.4.0",
     "build_type" : "tar",
-    "build_hash" : "c0a5b6be3ce66e8dbbcae3eb5ebc977b98f6e648",
-    "build_date" : "2022-07-13T17:26:48.372041Z",
+    "build_hash" : "...",
+    "build_date" : "...",
     "build_snapshot" : false,
     "lucene_version" : "8.10.1",
     "minimum_wire_compatibility_version" : "6.8.0",

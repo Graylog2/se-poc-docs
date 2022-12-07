@@ -11,8 +11,6 @@ The following steps are completed on the server/instance that will be used for M
 
 This page will provide instructions for how to install Graylog.
 
-To get started, use ssh to connect to your linux server, so that you can paste the commands into the terminal window.
-
 ## Housekeeping
 
 Assumes housekeeping steps from [Installing MongoDB](installing%20mongodb.md#housekeeping) have been completed.
@@ -21,23 +19,30 @@ Assumes housekeeping steps from [Installing MongoDB](installing%20mongodb.md#hou
 
 The code block below can be copy/pasted into a terminal.
 
+---
+🗒️ **NOTE**
+
+The Graylog 5 package `graylog-enterprise` is an all-in-one package for graylog-server and its integration plugins (Enterprise Paid features for Graylog Operations and Graylog Security). It is installed instead of `graylog-server`, which is now used only for Graylog Open Source.
+
+---
+
 ```sh
-wget https://packages.graylog2.org/repo/packages/graylog-4.3-repository_latest.deb
-sudo dpkg -i graylog-4.3-repository_latest.deb
-sudo apt update && sudo apt install graylog-server graylog-enterprise-plugins graylog-integrations-plugins graylog-enterprise-integrations-plugins
+wget https://packages.graylog2.org/repo/packages/graylog-5.0-repository_latest.deb
+sudo dpkg -i graylog-5.0-repository_latest.deb
+sudo apt update && sudo apt install graylog-enterprise
 
 ```
 
 ## Configure
 ### Set Admin Password
 
-The code block below can be copy/pasted into a terminal.
+You will be prompted to input a password. This will set the password used by the default ‘admin’ user account.
 
-After copy and pasting the below code block, you will be prompted to input a password. This will set the password used by the default ‘admin’ user account.
+The code block below can be copy/pasted into a terminal.
 
 ```sh
 sudo cp /etc/graylog/server/server.conf server.conf.bak
-echo -n "Enter Password: " && tmppw=$(head -1 </dev/stdin | tr -d '\n' | sha256sum | cut -d" " -f1) && sudo sed -i "s/root_password_sha2 =.*/root_password_sha2 = $tmppw/g" /etc/graylog/server/server.conf
+echo -n "Enter admin Password: " && tmppw=$(head -1 </dev/stdin | tr -d '\n' | sha256sum | cut -d" " -f1) && sudo sed -i "s/root_password_sha2 =.*/root_password_sha2 = $tmppw/g" /etc/graylog/server/server.conf
 
 ```
 
