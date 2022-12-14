@@ -51,21 +51,21 @@ The code block below can be copy/pasted into a terminal.
 sudo adduser --system --disabled-password --disabled-login --home /var/empty --no-create-home --quiet --force-badname --group opensearch
 
 # download
-wget https://artifacts.opensearch.org/releases/bundle/opensearch/2.4.0/opensearch-2.4.0-linux-x64.tar.gz
+wget https://artifacts.opensearch.org/releases/bundle/opensearch/2.4.1/opensearch-2.4.1-linux-x64.tar.gz
 
 # create directories
 sudo mkdir -p /graylog/opensearch/data
 sudo mkdir /var/log/opensearch
 
 # extract content from tar and move to install directory
-sudo tar -zxf opensearch-2.4.0-linux-x64.tar.gz
-sudo mv opensearch-2.4.0/* /graylog/opensearch/
+sudo tar -zxf opensearch-2.4.1-linux-x64.tar.gz
+sudo mv opensearch-2.4.1/* /graylog/opensearch/
 
 # remove empty directory
-sudo rm -r opensearch-2.4.0
+sudo rm -r opensearch-2.4.1
 
 # cleanup download .tar.gz
-rm -f opensearch-2.4.0-linux-x64.tar.gz
+rm -f opensearch-2.4.1-linux-x64.tar.gz
 
 # set permissions
 sudo chown -R opensearch:opensearch /graylog/opensearch/
@@ -227,7 +227,7 @@ Should return something like:
   "cluster_uuid" : "<uuid>",
   "version" : {
     "distribution" : "opensearch",
-    "number" : "2.4.0",
+    "number" : "2.4.1",
     "build_type" : "tar",
     "build_hash" : "...",
     "build_date" : "...",
