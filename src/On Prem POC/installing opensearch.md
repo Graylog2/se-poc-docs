@@ -22,6 +22,7 @@ sudo apt update && sudo apt upgrade
 # Install OpenJDK
 sudo apt install openjdk-11-jdk
 
+sudo timedatectl set-timezone UTC
 ```
 
 ## Install

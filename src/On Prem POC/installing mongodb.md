@@ -22,6 +22,8 @@ sudo apt update && sudo apt upgrade
 # Install Prereqs
 sudo apt install apt-transport-https openjdk-17-jre-headless uuid-runtime pwgen
 
+# set timezone to UTC
+sudo timedatectl set-timezone UTC
 ```
 
 ## Install
