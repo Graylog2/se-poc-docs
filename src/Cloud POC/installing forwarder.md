@@ -50,9 +50,9 @@ sudo apt-get install -y graylog-forwarder
 ### Complete 'New Forwarder' steps
 1. **Start Configuration**<br>![image](img/start-config.png)
 2. **Start new Forwarder**<br>![image](img/start-new-forwarder.png)
-3. Because we've completed the 'Install Forwarder' step in the above section, click 'Continue'<br>![image](img/install-forwarder.png)
-4. Input token name: `forwarder`, then click 'Create Token'<br>![image](img/create-token.png)
-5. Click 'Copy as configuration snippet'<br>![image](img/copy-snippet.png)
+3. Because we've completed the 'Install Forwarder' step in the above section, click **Continue**<br>![image](img/install-forwarder.png)
+4. Input token name: `forwarder`, then click **Create Token**<br>![image](img/create-token.png)
+5. Click **Copy as configuration snippet**<br>![image](img/copy-snippet.png)
 6. Using SSH edit the Graylog Forwarder configuration file to add the snippet we copied in the above step:
     1. SSH to your linux server where you install the Graylog Forwarder
     2. Edit the forwarder configuration file:
