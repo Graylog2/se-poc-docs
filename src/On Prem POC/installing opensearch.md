@@ -81,19 +81,11 @@ sudo -u opensearch touch /var/log/opensearch/graylog.log
 
 ### Create System Service
 
-Elevate as root if not already running as root
-
-```sh
-sudo su
-
-```
-
 The code block below can be copy/pasted into a terminal.
 
 ```sh
 # create opensearch service
-cat > /etc/systemd/system/opensearch.service <<EOF
-[Unit]
+echo "[Unit]
 Description=Opensearch
 Documentation=https://opensearch.org/docs/latest
 Requires=network.target remote-fs.target
@@ -129,8 +121,7 @@ SuccessExitStatus=143
 # Allow a slow startup before the systemd notifier module kicks in to extend the timeout
 TimeoutStartSec=180
 [Install]
-WantedBy=multi-user.target
-EOF
+WantedBy=multi-user.target" | sudo tee /etc/systemd/system/opensearch.service
 
 ```
 
@@ -151,8 +142,8 @@ The code block below can be copy/pasted into a terminal.
 
 ```sh
 cp /graylog/opensearch/config/opensearch.yml /graylog/opensearch/config/opensearch.yml.bak
-cat > /graylog/opensearch/config/opensearch.yml <<EOF
-cluster.name: graylog
+
+echo "cluster.name: graylog
 node.name: ${HOSTNAME}
 path.data: /graylog/opensearch/data
 path.logs: /var/log/opensearch
@@ -161,8 +152,7 @@ network.host: 0.0.0.0
 http.port: 9200
 discovery.type: single-node
 action.auto_create_index: false
-plugins.security.disabled: true
-EOF
+plugins.security.disabled: true" | sudo tee /graylog/opensearch/config/opensearch.yml
 
 ```
 
