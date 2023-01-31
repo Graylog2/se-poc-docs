@@ -3,7 +3,7 @@
 ---
 🗒️ **NOTE**
 
-The following steps are completed on the server/instance where MongoDB is installed.
+The following steps are completed on the server/instance where MongoDB is installed. This document assumes you are working with Ubuntu 20.04 LTS.
 
 ---
 
