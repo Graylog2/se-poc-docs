@@ -9,7 +9,7 @@ The following steps are completed on the server/instance that will be used for M
 
 ## Introduction
 
-This page will provide instructions for how to install MongoDB.
+This page will provide instructions for how to install MongoDB on Ubuntu 20.04 LTS.
 
 ## Housekeeping
 
