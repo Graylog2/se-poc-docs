@@ -9,7 +9,7 @@ The following steps are completed on the server/instance that will be used for O
 
 ## Introduction
 
-This page will provide instructions for how to install and configure a single node opensearch cluster.
+This page will provide instructions for how to install and configure a single node opensearch cluster on Ubuntu 20.04 LTS.
 
 ## Housekeeping
 
