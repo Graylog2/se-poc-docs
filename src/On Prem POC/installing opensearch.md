@@ -19,9 +19,6 @@ The code block below can be copy/pasted into a terminal.
 # Housekeeping, Upgrade/update all existing Ubuntu Server packages
 sudo apt update && sudo apt upgrade
 
-# Install OpenJDK
-sudo apt install openjdk-11-jdk
-
 sudo timedatectl set-timezone UTC
 ```
 
