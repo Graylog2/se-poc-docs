@@ -24,102 +24,9 @@ sudo timedatectl set-timezone UTC
 
 ## Install
 
-### Install Opensearch via .tar.gz
-
----
-🗒️ **NOTE**
-
-Opensearch does not currently provide packages for deb/apt installs. A "manual" install is required.
-
----
-
-The below code block will do the following:
-
-* Create a user that the opensearch service will run as
-* Download the opensearch `.tar.gz`
-* Create needed directories
-* Extract `.tar.gz` and move to permanent directory
-* Set folder owner and permissions
-* Create empty log file
-
-The code block below can be copy/pasted into a terminal.
-
-``` sh
-# Create your OpenSearch user
-sudo adduser --system --disabled-password --disabled-login --home /var/empty --no-create-home --quiet --force-badname --group opensearch
-
-# download
-wget https://artifacts.opensearch.org/releases/bundle/opensearch/2.4.1/opensearch-2.4.1-linux-x64.tar.gz
-
-# create directories
-sudo mkdir -p /graylog/opensearch/data
-sudo mkdir /var/log/opensearch
-
-# extract content from tar and move to install directory
-sudo tar -zxf opensearch-2.4.1-linux-x64.tar.gz
-sudo mv opensearch-2.4.1/* /graylog/opensearch/
-
-# remove empty directory
-sudo rm -r opensearch-2.4.1
-
-# cleanup download .tar.gz
-rm -f opensearch-2.4.1-linux-x64.tar.gz
-
-# set permissions
-sudo chown -R opensearch:opensearch /graylog/opensearch/
-sudo chown -R opensearch:opensearch /var/log/opensearch
-sudo chmod -R 2750 /graylog/opensearch/
-sudo chmod -R 2750 /var/log/opensearch
-
-# create empty log file
-sudo -u opensearch touch /var/log/opensearch/graylog.log
-
-```
-
-### Create System Service
-
-The code block below can be copy/pasted into a terminal.
-
 ```sh
-# create opensearch service
-echo "[Unit]
-Description=Opensearch
-Documentation=https://opensearch.org/docs/latest
-Requires=network.target remote-fs.target
-After=network.target remote-fs.target
-ConditionPathExists=/graylog/opensearch
-ConditionPathExists=/graylog/opensearch/data
-[Service]
-Environment=OPENSEARCH_HOME=/graylog/opensearch
-Environment=OPENSEARCH_PATH_CONF=/graylog/opensearch/config
-ReadWritePaths=/var/log/opensearch
-User=opensearch
-Group=opensearch
-WorkingDirectory=/graylog/opensearch
-ExecStart=/graylog/opensearch/bin/opensearch
-# Specifies the maximum file descriptor number that can be opened by this process
-LimitNOFILE=65535
-# Specifies the maximum number of processes
-LimitNPROC=4096
-# Specifies the maximum size of virtual memory
-LimitAS=infinity
-# Specifies the maximum file size
-LimitFSIZE=infinity
-# Disable timeout logic and wait until process is stopped
-TimeoutStopSec=0
-# SIGTERM signal is used to stop the Java process
-KillSignal=SIGTERM
-# Send the signal only to the JVM rather than its control group
-KillMode=process
-# Java process is never killed
-SendSIGKILL=no
-# When a JVM receives a SIGTERM signal it exits with code 143
-SuccessExitStatus=143
-# Allow a slow startup before the systemd notifier module kicks in to extend the timeout
-TimeoutStartSec=180
-[Install]
-WantedBy=multi-user.target" | sudo tee /etc/systemd/system/opensearch.service
-
+wget https://artifacts.opensearch.org/releases/bundle/opensearch/2.5.0/opensearch-2.5.0-linux-x64.deb
+sudo dpkg -i opensearch-2.5.0-linux-x64.deb
 ```
 
 ## Configure
@@ -131,18 +38,18 @@ Create Config File
 The code block below can be copy/pasted into a terminal.
 
 ```sh
-cp /graylog/opensearch/config/opensearch.yml /graylog/opensearch/config/opensearch.yml.bak
+cp /etc/opensearch/opensearch.yml /etc/opensearch/opensearch.yml.bak
 
 echo "cluster.name: graylog
 node.name: ${HOSTNAME}
-path.data: /graylog/opensearch/data
+path.data: /var/lib/opensearch
 path.logs: /var/log/opensearch
 transport.host: 0.0.0.0
 network.host: 0.0.0.0
 http.port: 9200
 discovery.type: single-node
 action.auto_create_index: false
-plugins.security.disabled: true" | sudo tee /graylog/opensearch/config/opensearch.yml
+plugins.security.disabled: true" | sudo tee /etc/opensearch/opensearch.yml
 
 ```
 
@@ -170,8 +77,8 @@ The code block below can be copy/pasted into a terminal.
 
 ```sh
 # open search java heap sizing (first command is min, second is max)
-sudo sed -i "s/^-Xms[0-9]\+g/-Xms${tmpheap}g/g" /graylog/opensearch/config/jvm.options
-sudo sed -i "s/^-Xmx[0-9]\+g/-Xmx${tmpheap}g/g" /graylog/opensearch/config/jvm.options
+sudo sed -i "s/^-Xms[0-9]\+g/-Xms${tmpheap}g/g" /etc/opensearch/jvm.options
+sudo sed -i "s/^-Xmx[0-9]\+g/-Xmx${tmpheap}g/g" /etc/opensearch/jvm.options
 
 # Configure the kernel parameters at runtime
 sudo sysctl -w vm.max_map_count=262144
@@ -206,14 +113,14 @@ Should return something like:
   "cluster_uuid" : "<uuid>",
   "version" : {
     "distribution" : "opensearch",
-    "number" : "2.4.1",
-    "build_type" : "tar",
-    "build_hash" : "...",
-    "build_date" : "...",
+    "number" : "2.5.0",
+    "build_type" : "deb",
+    "build_hash" : "b8a8b6c4d7fc7a7e32eb2cb68ecad8057a4636ad",
+    "build_date" : "2023-01-18T23:48:43.426713304Z",
     "build_snapshot" : false,
-    "lucene_version" : "8.10.1",
-    "minimum_wire_compatibility_version" : "6.8.0",
-    "minimum_index_compatibility_version" : "6.0.0-beta1"
+    "lucene_version" : "9.4.2",
+    "minimum_wire_compatibility_version" : "7.10.0",
+    "minimum_index_compatibility_version" : "7.0.0"
   },
   "tagline" : "The OpenSearch Project: https://opensearch.org/"
 }
