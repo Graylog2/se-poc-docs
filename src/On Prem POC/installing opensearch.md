@@ -126,13 +126,6 @@ WantedBy=multi-user.target" | sudo tee /etc/systemd/system/opensearch.service
 
 ### Create Configuration file
 
-Elevate as root if not already running as root
-
-```sh
-sudo su
-
-```
-
 Create Config File
 
 The code block below can be copy/pasted into a terminal.
