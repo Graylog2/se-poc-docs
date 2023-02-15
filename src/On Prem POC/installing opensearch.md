@@ -146,8 +146,6 @@ plugins.security.disabled: true" | sudo tee /graylog/opensearch/config/opensearc
 
 ```
 
-Exit su via `exit`.
-
 ### Additional Configurations
 
 Additional Configurations, Set Opensearch Memory/Heap Limit, kernel parameters.
