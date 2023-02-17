@@ -77,7 +77,9 @@ sudo systemctl start graylog-forwarder
 
 ### Add Syslog UDP Input
 
-Before continuing, use SSH to add the following IP Tables rules to the linux server where the Graylog Forwarder is installed. (NOTE: this is required in order to bind to ports lower than 1024)
+Before continuing, use SSH to add the following IP Tables rules to the linux server where the Graylog Forwarder is installed.
+
+This allows devices to send syslog to the Graylog Forwarder on the default syslog port, 514. However, the Graylog Syslog input will listen on port 1514.
 
 ```
 sudo iptables -t nat -A PREROUTING -p tcp --dport 514 -j REDIRECT --to 1514
