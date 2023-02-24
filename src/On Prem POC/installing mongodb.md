@@ -9,7 +9,7 @@ The following steps are completed on the server/instance that will be used for M
 
 ## Introduction
 
-This page will provide instructions for how to install MongoDB on Ubuntu 20.04 LTS.
+This page will provide instructions for how to install MongoDB on Ubuntu **22**.04 LTS.
 
 ## Housekeeping
 
@@ -37,7 +37,7 @@ The code block below can be copy/pasted into a terminal.
 # for reference, via https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/
 # Install MongoDB 6
 wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc | sudo apt-key add -
-echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list
+echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list
 sudo apt update
 sudo apt install -y mongodb-org mongodb-mongosh
 
@@ -66,5 +66,5 @@ mongosh --eval "db.version()" --quiet
 Should return something like:
 
 ```
-6.0.2
+6.0.4
 ```
