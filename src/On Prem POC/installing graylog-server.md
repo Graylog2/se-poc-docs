@@ -9,7 +9,7 @@ The following steps are completed on the server/instance that will be used for M
 
 ## Introduction
 
-This page will provide instructions for how to install Graylog (`graylog-server`) on Ubuntu 20.04 LTS.
+This page will provide instructions for how to install Graylog (`graylog-server`) on Ubuntu **22**.04 LTS.
 
 ## Housekeeping
 
