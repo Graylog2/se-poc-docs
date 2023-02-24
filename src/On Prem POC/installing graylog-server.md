@@ -108,6 +108,7 @@ sudo systemctl --type=service --state=active | grep graylog
 
 ```sh
 curl localhost:9000/api/
+
 ```
 
 Should return something like:

@@ -20,6 +20,7 @@ The code block below can be copy/pasted into a terminal.
 sudo apt update && sudo apt upgrade
 
 sudo timedatectl set-timezone UTC
+
 ```
 
 ## Install
@@ -27,6 +28,7 @@ sudo timedatectl set-timezone UTC
 ```sh
 wget https://artifacts.opensearch.org/releases/bundle/opensearch/2.5.0/opensearch-2.5.0-linux-x64.deb
 sudo dpkg -i opensearch-2.5.0-linux-x64.deb
+
 ```
 
 ## Configure

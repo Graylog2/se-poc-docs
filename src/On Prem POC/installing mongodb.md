@@ -24,6 +24,7 @@ sudo apt install apt-transport-https openjdk-17-jre-headless uuid-runtime pwgen
 
 # set timezone to UTC
 sudo timedatectl set-timezone UTC
+
 ```
 
 ## Install
@@ -39,6 +40,7 @@ wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc | sudo apt-key add 
 echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list
 sudo apt update
 sudo apt install -y mongodb-org mongodb-mongosh
+
 ```
 
 Enable and Start MongoDB
@@ -51,12 +53,14 @@ sudo systemctl daemon-reload
 sudo systemctl enable mongod.service
 sudo systemctl start mongod.service
 sudo systemctl --type=service --state=active | grep mongod
+
 ```
 
 ## Verify Completion
 
 ```sh
 mongosh --eval "db.version()" --quiet
+
 ```
 
 Should return something like:
