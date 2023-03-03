@@ -64,7 +64,7 @@ Set opensearch heap size. Heap size should be set to **half of the amount of RAM
 ---
 ⚠️ **NOTE**
 
-Heap size should not exceep 31GB.
+Heap size should not exceed 31GB.
 
 ---
 
