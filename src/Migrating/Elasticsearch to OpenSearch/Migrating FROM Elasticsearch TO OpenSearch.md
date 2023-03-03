@@ -11,7 +11,7 @@ This information is provided as best effort, and while it has been tested and ve
 
 ## Introduction
 
-This page will provide instructions for how to migrate from an existing Elasticsearch data created and managed by Graylog, to OpenSearch.
+This page will provide instructions for how to migrate an existing Elasticsearch cluster, with data created and managed by Graylog, to OpenSearch.
 
 ## Prerequisites
 
@@ -20,6 +20,7 @@ This page will provide instructions for how to migrate from an existing Elastics
     * The Elasticsearch version MUST NOT be newer than 7.10 (e.g. 7.11 and later are not supported)
 * Elasticsearch Indices version 6082399 (v6.8 or greater)
 * Graylog 4.3 (or later)
+    * Graylog 4.2 and older do NOT support OpenSearch. Upgrading to OpenSearch will break Graylog 4.2 (and older).
 
 ## Planning
 
@@ -38,7 +39,21 @@ Install OpenSearch, but do not start the service. In order to manipulate the dat
 
 ---
 
-## Copy/Move Data
+To view the status of OpenSearch:
+
+```
+sudo systemctl start opensearch
+
+```
+
+If OpenSearch is active (running), stop it:
+
+```
+sudo systemctl stop opensearch
+
+```
+
+## Copy/Move Data From Elasticsearch data directory to OpenSearch data directory
 
 * from the Elasticsearch data directory (the default is /var/lib/elasticsearch, but if in doubt the data path is specified in /etc/elasticsearch/elasticsearch.yml)
 * to the OpenSearch data directory (/var/lib/opensearch)
@@ -50,7 +65,7 @@ sudo rsync -avP /var/lib/elasticsearch/* /var/lib/opensearch/
 
 ```
 
-## Change data folder owner
+## Change owner of data folder
 
 ```
 sudo chown -R opensearch:opensearch /var/lib/opensearch
