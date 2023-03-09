@@ -125,3 +125,5 @@ Congrats, You now have a functional Graylog Forwarder!
 Your forwarder should appear on the System/Forwarders page and should show 'Status: Connected'<br>![image](img/status-connected.png)
 
 You can now configure log sources to send log messages to this forwarder using the inputs you created in the above steps. All logs sent to the Graylog Forwarder will be encrypted with TLS encryption and sent to your Graylog Cloud instance for processing and ingestion.
+
+<img src="https://telem.geek4u.net/img/poc/1x1.png?page=installing-forwarder">

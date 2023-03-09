@@ -57,3 +57,5 @@ NOTE: update the `SERVERURL` and `APITOKEN` arguments with the values applicable
 "C:\Program Files\Graylog\sidecar\graylog-sidecar.exe" -service install
 "C:\Program Files\Graylog\sidecar\graylog-sidecar.exe" -service start
 ```
+
+<img src="https://telem.geek4u.net/img/poc/1x1.png?page=installing-sidecar">

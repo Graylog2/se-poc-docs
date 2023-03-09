@@ -99,3 +99,5 @@ mongosh --eval 'db.adminCommand( { getParameter: 1, featureCompatibilityVersion:
 ```
 
 This should return `{ version: '5.0' }, ok: 1 }`.
+
+<img src="https://telem.geek4u.net/img/poc/1x1.png?page=upgrading-mongodb-44-50">
