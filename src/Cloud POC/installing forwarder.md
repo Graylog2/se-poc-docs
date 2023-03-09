@@ -33,7 +33,7 @@ Download and Install:
 The code block below can be copy/pasted into a terminal.
 
 ```
-sudo apt-get install apt-transport-https openjdk-17-jdk-headless
+sudo apt-get install -y apt-transport-https openjdk-17-jdk-headless
 wget https://packages.graylog2.org/repo/packages/graylog-forwarder-repository_5-1_all.deb
 sudo dpkg -i graylog-forwarder-repository_5-1_all.deb
 sudo apt-get update
