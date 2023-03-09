@@ -52,14 +52,24 @@ sudo apt-get install -y graylog-forwarder
 2. **Start new Forwarder**<br>![image](img/start-new-forwarder.png)
 3. Because we've completed the 'Install Forwarder' step in the above section, click **Continue**<br>![image](img/install-forwarder.png)
 4. Input token name: `forwarder`, then click **Create Token**<br>![image](img/create-token.png)
-5. Click **Copy as configuration snippet**<br>![image](img/copy-snippet.png)
+5. Make note of the `forwarder_server_hostname` and `forwarder_grpc_api_token` values. You will need these for the next step.<br>![image](img/note-forwarder-hostname-token.png)
 6. Using SSH edit the Graylog Forwarder configuration file to add the snippet we copied in the above step:
     1. SSH to your linux server where you install the Graylog Forwarder
-    2. Edit the forwarder configuration file:
-        * `sudo nano /etc/graylog/forwarder/forwarder.conf`
-    3. You should see the following on the first 2 lines. Delete these first 2 lines using the delete and/or backspace keys:<br>`forwarder_server_hostname =`<br>`forwarder_grpc_api_token =`
-    4. Paste the snippet (ctrl+v) copied in the above step. The end result should look like this:<br>![image](img/nano-edit-conf.png)
-    5. While the SSH/terminal window is active/selected, press Ctrl+X to save and exit. You will be asked to "Save modified buffer?" Press Y to save and then press Enter to confirm.<br>![image](img/save-buffer.png)
+    2. Copy and paste the commands below into the SSH session where you have the Graylog Forwarder installed. These commands will ask for input and the write the values to the Graylog Forwarder configuration file.
+
+For `forwarder_server_hostname`. After copy/pasting this command, you can copy the value for `forwarder_server_hostname` from the forwarder setup page.
+
+```shell
+`echo -ne "Enter Graylog forwarder_server_hostname: " && tmp=$(head -1 </dev/stdin) && sed -i "s/.*forwarder_server_hostname = .*/forwarder_server_hostname = $tmp/g" /etc/graylog/forwarder/forwarder.conf`
+
+```
+
+For `forwarder_grpc_api_token`. After copy/pasting this command, you can copy the value for `forwarder_grpc_api_token` from the forwarder setup page.
+
+```shell
+echo -ne "Enter Graylog forwarder_grpc_api_token: " && tmp=$(head -1 </dev/stdin) && sed -i "s/.*forwarder_grpc_api_token = .*/forwarder_grpc_api_token = $tmp/g" /etc/graylog/forwarder/forwarder.conf
+
+```
 
 7. Using the SSH, start and enable the Graylog Forwarder:
 
