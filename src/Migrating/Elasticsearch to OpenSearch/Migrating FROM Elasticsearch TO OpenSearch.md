@@ -79,4 +79,4 @@ sudo systemctl start opensearch
 
 ```
 
-<img src="https://telem.geek4u.net/img/poc/1x1.png?page=migrating-es-os">
+![image](https://telem.geek4u.net/img/poc/1x1.png?page=migrating-es-os)
