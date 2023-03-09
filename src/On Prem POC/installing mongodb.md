@@ -68,3 +68,5 @@ Should return something like:
 ```
 6.0.4
 ```
+
+<img src="https://telem.geek4u.net/img/poc/1x1.png?page=installing-mongodb">

@@ -78,3 +78,5 @@ sudo chown -R opensearch:opensearch /var/lib/opensearch
 sudo systemctl start opensearch
 
 ```
+
+<img src="https://telem.geek4u.net/img/poc/1x1.png?page=migrating-es-os">
