@@ -127,5 +127,3 @@ Should return something like:
   "tagline" : "The OpenSearch Project: https://opensearch.org/"
 }
 ```
-
-<img src="https://telem.geek4u.net/img/poc/1x1.png?page=installing-opensearch">
