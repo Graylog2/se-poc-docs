@@ -116,5 +116,3 @@ Should return something like:
 ```
 {"cluster_id":"<clusterid>","node_id":"<nodeid>","version":"<version>"}
 ```
-
-<img src="https://telem.geek4u.net/img/poc/1x1.png?page=installing-graylog">

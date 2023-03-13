@@ -128,5 +128,3 @@ Now that you have a configuration created, you can assign it to a sidecar.
 6. Click `Confirm` on the dialog box that appears
 
 This will apply the configuration immediately and start the applicable collector on the remote machine.
-
-<img src="https://telem.geek4u.net/img/poc/1x1.png?page=configuring-sidecar">
