@@ -20,7 +20,7 @@ The code block below can be copy/pasted into a terminal.
 sudo apt update && sudo apt upgrade
 
 # Install Prereqs
-sudo apt install apt-transport-https openjdk-17-jre-headless uuid-runtime pwgen
+sudo apt install -y apt-transport-https openjdk-17-jre-headless uuid-runtime pwgen
 
 # set timezone to UTC
 sudo timedatectl set-timezone UTC
