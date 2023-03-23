@@ -29,7 +29,7 @@ The Graylog 5 package `graylog-enterprise` is an all-in-one package for graylog-
 ```sh
 wget https://packages.graylog2.org/repo/packages/graylog-5.0-repository_latest.deb
 sudo dpkg -i graylog-5.0-repository_latest.deb
-sudo apt update && sudo apt install graylog-enterprise
+sudo apt update && sudo apt install -y graylog-enterprise
 
 ```
 
