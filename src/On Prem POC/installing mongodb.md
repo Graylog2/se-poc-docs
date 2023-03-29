@@ -66,5 +66,5 @@ mongosh --eval "db.version()" --quiet
 Should return something like:
 
 ```
-6.0.4
+6.0.5
 ```
