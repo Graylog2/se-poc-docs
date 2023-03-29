@@ -40,7 +40,7 @@ Create Config File
 The code block below can be copy/pasted into a terminal.
 
 ```sh
-cp /etc/opensearch/opensearch.yml /etc/opensearch/opensearch.yml.bak
+sudo cp /etc/opensearch/opensearch.yml /etc/opensearch/opensearch.yml.bak
 
 echo "cluster.name: graylog
 node.name: ${HOSTNAME}
