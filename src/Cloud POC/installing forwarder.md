@@ -49,6 +49,15 @@ sudo apt-get install -y graylog-forwarder
 
 ```
 
+Allow Graylog Inputs to bind to ports <1024:
+
+```
+sudo sed -i '/^LimitNOFILE=64000.*/a AmbientCapabilities=CAP_NET_BIND_SERVICE' /usr/lib/systemd/system/graylog-forwarder.service
+sudo systemctl daemon-reload
+sudo systemctl restart graylog-forwarder
+
+```
+
 ## Setup Forwarder via Graylog Cloud
 
 1. Login to your Graylog Cloud instance
