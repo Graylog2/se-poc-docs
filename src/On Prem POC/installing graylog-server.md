@@ -92,6 +92,19 @@ sudo sed -i 's/-Xmx[0-9]\+g /-Xmx8g /g' /etc/default/graylog-server
 
 ```
 
+### Allow Graylog-server to bind to ports <1024
+
+By default, non root linux users cannot bind to network ports lower than 1024. This means that if graylog is installed via an Operating System Packages, graylog will be unable to start any inputs on ports lower than 1024, such as Syslog on port 514.
+
+To address this, you need to add AmbientCapabilities=CAP_NET_BIND_SERVICE to graylog’s service file.
+
+```
+sudo sed -i '/^LimitNOFILE=64000.*/a AmbientCapabilities=CAP_NET_BIND_SERVICE' /usr/lib/systemd/system/graylog-server.service
+sudo systemctl daemon-reload
+sudo systemctl restart graylog-server
+
+```
+
 ### Enable Service and Start
 
 The code block below can be copy/pasted into a terminal.
