@@ -111,8 +111,8 @@ The code block below can be copy/pasted into a terminal.
 
 ```sh
 sudo systemctl daemon-reload
-sudo systemctl enable graylog-server.service
-sudo systemctl start graylog-server.service
+sudo systemctl enable graylog-server
+sudo systemctl start graylog-server
 sudo systemctl --type=service --state=active | grep graylog
 
 ```
