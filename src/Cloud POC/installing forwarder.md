@@ -106,20 +106,12 @@ sudo systemctl start graylog-forwarder
 
 Before continuing, use SSH to add the following IP Tables rules to the linux server where the Graylog Forwarder is installed.
 
-This allows devices to send syslog to the Graylog Forwarder on the default syslog port, 514. However, the Graylog Syslog input will listen on port 1514.
-
-```
-sudo iptables -t nat -A PREROUTING -p tcp --dport 514 -j REDIRECT --to 1514
-sudo iptables -t nat -A PREROUTING -p udp --dport 514 -j REDIRECT --to 1514
-
-```
-
 Back to the Graylog Cloud webpage:
 
 1. Input Type: Syslog UDP
 2. Title: Syslog UDP
 3. Bind Address: (leave default) 0.0.0.0
-4. Port: 1514
+4. Port: 514
 5. **Create Input**
 
 ### Add Syslog TCP Input
@@ -128,7 +120,7 @@ Back to the Graylog Cloud webpage:
 2. Input Type: Syslog TCP
 3. Title: Syslog TCP
 4. Bind Address: (leave default) 0.0.0.0
-5. Port: 1514
+5. Port: 514
 6. **Create Input**
 
 ### Add Beats Input
