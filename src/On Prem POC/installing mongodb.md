@@ -61,7 +61,6 @@ The code block below can be copy/pasted into a terminal.
 sudo systemctl daemon-reload
 sudo systemctl enable mongod.service
 sudo systemctl start mongod.service
-sudo systemctl --type=service --state=active | grep mongod
 
 ```
 
