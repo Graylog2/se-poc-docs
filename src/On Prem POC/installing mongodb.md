@@ -26,7 +26,7 @@ The code block below can be copy/pasted into a terminal.
 
 ```sh
 # Housekeeping, Upgrade/update all existing Ubuntu Server packages
-sudo apt update && sudo apt upgrade
+sudo apt update && sudo apt upgrade -y
 
 # Install Prereqs
 sudo apt install -y apt-transport-https uuid-runtime pwgen
