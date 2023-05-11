@@ -29,7 +29,7 @@ The code block below can be copy/pasted into a terminal.
 sudo apt update && sudo apt upgrade -y
 
 # Install Prereqs
-sudo apt install -y apt-transport-https uuid-runtime pwgen
+sudo apt install -y uuid-runtime pwgen
 
 # set timezone to UTC
 sudo timedatectl set-timezone UTC
