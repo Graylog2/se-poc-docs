@@ -11,7 +11,7 @@ Sidecar is used to collect logs from devices, and is installed on any endpoint y
 ### API Token
 Before you can use Sidecar, you must first generate an API token that Sidecar can use to securely communicate with your graylog cluster.
 
-See https://docs.graylog.org/docs/sidecar#stepbystep-guide
+See [Graylog Sidecar: Step-by-step Guide](https://go2docs.graylog.org/5-1/getting_in_log_data/graylog_sidecar.html#StepbyStepGuide)
 
 ### Beats Input
 
