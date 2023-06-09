@@ -36,7 +36,7 @@ Housekeeping:
 The code block below can be copy/pasted into a terminal.
 
 ```
-sudo apt update && sudo apt upgrade
+sudo apt update && sudo apt upgrade -y
 
 ```
 
