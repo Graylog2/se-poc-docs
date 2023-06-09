@@ -33,7 +33,7 @@ Prereqs:
 The code block below can be copy/pasted into a terminal.
 
 ```
-sudo apt-get install -y apt-transport-https openjdk-17-jdk-headless
+sudo apt-get install -y openjdk-17-jdk-headless
 
 ```
 
