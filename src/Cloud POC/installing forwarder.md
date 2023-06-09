@@ -14,8 +14,20 @@ This page will provide instructions for how to install the Graylog Forwarder. Fo
 ## Prerequisites
 
 * A linux server
-    * These instructions will cover installing on Ubuntu Server 20.04 LTS
+    * These instructions will cover installing on
+        * Ubuntu Server 20.04 LTS, 22.04 LTS
 * The ability to "ssh" into the server
+
+## Housekeeping
+
+Authenticate with sudo at least 1 time to ensure code blacks that have multiple lines with sudo commands run correctly:
+
+The code block below can be copy/pasted into a terminal.
+
+```sh
+sudo whoami
+
+```
 
 ## Install
 
