@@ -92,8 +92,7 @@ The code block below can be copy/pasted into a terminal.
 
 ```sh
 # open search java heap sizing (first command is min, second is max)
-sudo sed -i "s/^-Xms[0-9]\+g/-Xms${tmpheap}g/g" /etc/opensearch/jvm.options
-sudo sed -i "s/^-Xmx[0-9]\+g/-Xmx${tmpheap}g/g" /etc/opensearch/jvm.options
+sudo sed -i "s/^-Xmx[0-9]\+g/-Xmx${tmpheap}g/g" /etc/opensearch/jvm.options && sudo sed -i "s/^-Xms[0-9]\+g/-Xms${tmpheap}g/g" /etc/opensearch/jvm.options
 
 # Configure the kernel parameters at runtime
 sudo sysctl -w vm.max_map_count=262144
