@@ -28,6 +28,7 @@ The code block below can be copy/pasted into a terminal.
 # Housekeeping, Upgrade/update all existing Ubuntu Server packages
 sudo apt update && sudo apt upgrade -y
 
+# set timezone to UTC
 sudo timedatectl set-timezone UTC
 
 # disable cloud-init, not needed for our purposes
