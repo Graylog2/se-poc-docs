@@ -27,7 +27,20 @@ The code block below can be copy/pasted into a terminal.
 ```sh
 # Housekeeping, Upgrade/update all existing Ubuntu Server packages
 sudo apt update && sudo apt upgrade -y
+```
 
+During `apt upgrade` you may be presented with a screen that looks like this:
+
+![Ubuntu Pending kernel upgrade screenshot](img/ubuntu-apt-update-prompt.png)
+
+1. Press Enter `<Ok>`
+2. You will then be presented with a screen that lists some services.
+    * ![Ubuntu Daemons using outdated libraries screenshot](img/ubuntu-daemons-using-outdated.png)
+3. Leave the defaults, press Tab to select `<Ok>` and then press Enter.
+
+The code block below can be copy/pasted into a terminal.
+
+```sh
 # set timezone to UTC
 sudo timedatectl set-timezone UTC
 
