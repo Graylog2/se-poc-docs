@@ -109,7 +109,6 @@ To address this, you need to add AmbientCapabilities=CAP_NET_BIND_SERVICE to gra
 ```
 sudo sed -i '/^LimitNOFILE=64000.*/a AmbientCapabilities=CAP_NET_BIND_SERVICE' /usr/lib/systemd/system/graylog-server.service
 sudo systemctl daemon-reload
-sudo systemctl restart graylog-server
 
 ```
 
