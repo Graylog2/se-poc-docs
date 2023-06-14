@@ -96,8 +96,7 @@ The below command will set graylog-server to use 8GB of RAM. Please verify your 
 The code block below can be copy/pasted into a terminal.
 
 ```sh
-sudo sed -i 's/-Xms[0-9]\+g /-Xms8g /g' /etc/default/graylog-server
-sudo sed -i 's/-Xmx[0-9]\+g /-Xmx8g /g' /etc/default/graylog-server
+sudo sed 's/-Xmx[0-9]\+g /-Xmx2g /g' /etc/default/graylog-server && sudo sed 's/-Xms[0-9]\+g /-Xms2g /g' /etc/default/graylog-server
 
 ```
 
