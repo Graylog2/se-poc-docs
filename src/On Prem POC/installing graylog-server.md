@@ -89,15 +89,14 @@ echo -n "Enter IP of Opensearch Server: " && tmpip=$(head -1 </dev/stdin) && sud
 ---
 ⚠️ **NOTE**
 
-The below command will set graylog-server to use 8GB of RAM. Please verify your graylog server is configured with 16GB of RAM.
+The below command will set graylog-server to use 2GB of HEAP.
 
 ---
 
 The code block below can be copy/pasted into a terminal.
 
 ```sh
-sudo sed -i 's/-Xms[0-9]\+g /-Xms8g /g' /etc/default/graylog-server
-sudo sed -i 's/-Xmx[0-9]\+g /-Xmx8g /g' /etc/default/graylog-server
+sudo sed 's/-Xmx[0-9]\+g /-Xmx2g /g' /etc/default/graylog-server && sudo sed 's/-Xms[0-9]\+g /-Xms2g /g' /etc/default/graylog-server
 
 ```
 
@@ -110,7 +109,6 @@ To address this, you need to add AmbientCapabilities=CAP_NET_BIND_SERVICE to gra
 ```
 sudo sed -i '/^LimitNOFILE=64000.*/a AmbientCapabilities=CAP_NET_BIND_SERVICE' /usr/lib/systemd/system/graylog-server.service
 sudo systemctl daemon-reload
-sudo systemctl restart graylog-server
 
 ```
 

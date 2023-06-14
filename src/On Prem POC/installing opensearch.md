@@ -27,17 +27,37 @@ The code block below can be copy/pasted into a terminal.
 ```sh
 # Housekeeping, Upgrade/update all existing Ubuntu Server packages
 sudo apt update && sudo apt upgrade -y
+```
 
+During `apt upgrade` you may be presented with a screen that looks like this:
+
+![Ubuntu Pending kernel upgrade screenshot](img/ubuntu-apt-update-prompt.png)
+
+1. Press Enter `<Ok>`
+2. You will then be presented with a screen that lists some services.
+    * ![Ubuntu Daemons using outdated libraries screenshot](img/ubuntu-daemons-using-outdated.png)
+3. Leave the defaults, press Tab to select `<Ok>` and then press Enter.
+
+The code block below can be copy/pasted into a terminal.
+
+```sh
+# set timezone to UTC
 sudo timedatectl set-timezone UTC
+
+# disable cloud-init, not needed for our purposes
+sudo touch /etc/cloud/cloud-init.disabled
 
 ```
 
 ## Install
 
 ```sh
+# Download package file
 wget https://artifacts.opensearch.org/releases/bundle/opensearch/2.5.0/opensearch-2.5.0-linux-x64.deb
+# Install package file
 sudo dpkg -i opensearch-2.5.0-linux-x64.deb
-
+# set default value for heap variable
+tmpheap=1
 ```
 
 ## Configure
@@ -88,8 +108,7 @@ The code block below can be copy/pasted into a terminal.
 
 ```sh
 # open search java heap sizing (first command is min, second is max)
-sudo sed -i "s/^-Xms[0-9]\+g/-Xms${tmpheap}g/g" /etc/opensearch/jvm.options
-sudo sed -i "s/^-Xmx[0-9]\+g/-Xmx${tmpheap}g/g" /etc/opensearch/jvm.options
+sudo sed -i "s/^-Xmx[0-9]\+g/-Xmx${tmpheap}g/g" /etc/opensearch/jvm.options && sudo sed -i "s/^-Xms[0-9]\+g/-Xms${tmpheap}g/g" /etc/opensearch/jvm.options
 
 # Configure the kernel parameters at runtime
 sudo sysctl -w vm.max_map_count=262144
