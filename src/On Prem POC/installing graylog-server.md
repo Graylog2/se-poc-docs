@@ -89,7 +89,7 @@ echo -n "Enter IP of Opensearch Server: " && tmpip=$(head -1 </dev/stdin) && sud
 ---
 ⚠️ **NOTE**
 
-The below command will set graylog-server to use 8GB of RAM. Please verify your graylog server is configured with 16GB of RAM.
+The below command will set graylog-server to use 2GB of HEAP.
 
 ---
 
