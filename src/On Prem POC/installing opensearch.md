@@ -39,7 +39,9 @@ sudo touch /etc/cloud/cloud-init.disabled
 ## Install
 
 ```sh
+# Download package file
 wget https://artifacts.opensearch.org/releases/bundle/opensearch/2.5.0/opensearch-2.5.0-linux-x64.deb
+# Install package file
 sudo dpkg -i opensearch-2.5.0-linux-x64.deb
 
 ```
