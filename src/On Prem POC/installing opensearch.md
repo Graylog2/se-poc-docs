@@ -11,18 +11,18 @@ The following steps are completed on the server/instance that will be used for O
 
 This page will provide instructions for how to install and configure a single node opensearch cluster on Ubuntu **22**.04 LTS.
 
+Code blocks below can be copy/pasted into a terminal.
+
 ## Housekeeping
 
 Authenticate with sudo at least 1 time to ensure code blacks that have multiple lines with sudo commands run correctly:
-
-The code block below can be copy/pasted into a terminal.
 
 ```sh
 sudo whoami
 
 ```
 
-The code block below can be copy/pasted into a terminal.
+Upgrade existing packages to latest versions. Ensure we start from a clean and updated state.
 
 ```sh
 # Housekeeping, Upgrade/update all existing Ubuntu Server packages
@@ -38,7 +38,14 @@ During `apt upgrade` you may be presented with a screen that looks like this:
     * ![Ubuntu Daemons using outdated libraries screenshot](img/ubuntu-daemons-using-outdated.png)
 3. Leave the defaults, press Tab to select `<Ok>` and then press Enter.
 
-The code block below can be copy/pasted into a terminal.
+After this is complete, reboot the server to ensure all upgrades/updates are fully applied:
+
+```sh
+sudo shutdown -r now
+
+```
+
+Continue with these commands:
 
 ```sh
 # set timezone to UTC
@@ -65,8 +72,6 @@ tmpheap=1
 ### Create Configuration file
 
 Create Config File
-
-The code block below can be copy/pasted into a terminal.
 
 ```sh
 sudo cp /etc/opensearch/opensearch.yml /etc/opensearch/opensearch.yml.bak
@@ -97,14 +102,14 @@ Heap size should not exceed 31GB.
 
 ---
 
-The code block below can be copy/pasted into a terminal.
+This command will prompt for the heap size number, in GB.
 
 ```sh
 echo -n "Enter number of GB to set heap size to (number only): " && tmpheap=$(head -1 </dev/stdin)
 
 ```
 
-The code block below can be copy/pasted into a terminal.
+Continue with these commands:
 
 ```sh
 # open search java heap sizing (first command is min, second is max)
