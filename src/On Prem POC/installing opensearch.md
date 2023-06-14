@@ -45,7 +45,7 @@ sudo shutdown -r now
 
 ```
 
-Continue with these commands:
+After reboot, continue with these commands:
 
 ```sh
 # set timezone to UTC
