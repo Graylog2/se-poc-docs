@@ -34,6 +34,9 @@ sudo apt install -y uuid-runtime pwgen
 # set timezone to UTC
 sudo timedatectl set-timezone UTC
 
+# disable cloud-init, not needed for our purposes
+sudo touch /etc/cloud/cloud-init.disabled
+
 ```
 
 ## Install

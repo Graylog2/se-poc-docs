@@ -30,6 +30,9 @@ sudo apt update && sudo apt upgrade -y
 
 sudo timedatectl set-timezone UTC
 
+# disable cloud-init, not needed for our purposes
+sudo touch /etc/cloud/cloud-init.disabled
+
 ```
 
 ## Install
