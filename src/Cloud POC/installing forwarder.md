@@ -115,8 +115,6 @@ sudo systemctl start graylog-forwarder
 
 ### Add Syslog UDP Input
 
-Before continuing, use SSH to add the following IP Tables rules to the linux server where the Graylog Forwarder is installed.
-
 Back to the Graylog Cloud webpage:
 
 1. Input Type: Syslog UDP
