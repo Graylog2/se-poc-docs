@@ -20,7 +20,7 @@ This page will provide instructions for how to install the Graylog Forwarder. Fo
 
 ## Housekeeping
 
-Authenticate with sudo at least 1 time to ensure code blacks that have multiple lines with sudo commands run correctly:
+Authenticate with sudo at least 1 time to ensure code blocks that have multiple lines with sudo commands run correctly:
 
 The code block below can be copy/pasted into a terminal.
 
