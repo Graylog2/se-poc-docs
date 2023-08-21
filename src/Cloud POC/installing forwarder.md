@@ -14,6 +14,10 @@ This page will provide instructions for how to install the Graylog Forwarder. Fo
 ## Prerequisites
 
 * A linux server
+    * Minimum system requirements (assuming virtual machine):
+        * CPU: 2 (vCPU)
+        * RAM: 4 GB
+        * Disk Space: 25GB (15GB for Operating System, 10GB for Graylog Forwarder)
     * These instructions will cover installing on
         * Ubuntu Server 20.04 LTS, 22.04 LTS
 * The ability to "ssh" into the server
