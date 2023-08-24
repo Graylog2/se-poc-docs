@@ -6,6 +6,14 @@ This page will provide instructions for how to install [Graylog Sidecar](https:/
 
 Sidecar is used to collect logs from devices, and is installed on any endpoint you wish to collect logs from.
 
+Graylog sidecar communicates with its graylog cluster using the graylog API. This applies to both self managed (on premises) and Graylog Cloud clusters.
+
+However, for Graylog cloud, the sidecar will send logs to the Graylog Forwarder instead of the Graylog Cluster itself.
+
+Graylog Cloud:<br>![Graylog Sidecar used with Graylog Cloud](img/Graylog-Sidecar-diagram-cloud.png)
+
+Graylog Self-Managed:<br>![Graylog Sidecar used with Graylog Self-Managed](img/Graylog-Sidecar-diagram-self-managed.png)
+
 ## Prerequisites
 
 ### API Token
@@ -17,17 +25,18 @@ See [Graylog Sidecar: Step-by-step Guide](https://go2docs.graylog.org/5-1/gettin
 
 Make sure you have a beats input created and started before continuing.
 
+# Install - Windows
+
+Install Sidecar on any device(s) you want to collect logs from and forward to your graylog cluster.
+
 ## Download
 
 Download the latest release via https://github.com/Graylog2/collector-sidecar/releases/latest .
 
 For Microsoft Windows (Both Windows and Windows Server) download graylog_sidecar_installer_[version].exe.
 
-For linux choose the install applicable to your distribution (e.g. deb based or rpm based)
-
 ## Install
 
-Install Sidecar on any device(s) you want to collect logs from and forward to your graylog cluster.
 
 Sidecar can be installed by executing the download file, such as the `.exe`. You will be prompted to input your Graylog API address and your API key.
 
@@ -57,3 +66,51 @@ NOTE: update the `SERVERURL` and `APITOKEN` arguments with the values applicable
 "C:\Program Files\Graylog\sidecar\graylog-sidecar.exe" -service install
 "C:\Program Files\Graylog\sidecar\graylog-sidecar.exe" -service start
 ```
+
+# Install - Linux
+
+Install Sidecar on any device(s) you want to collect logs from and forward to your graylog cluster.
+
+## Ubuntu Server
+
+Code blocks below can be copy/pasted into a terminal.
+
+Download/install Graylog Sidecar:
+
+```
+wget https://packages.graylog2.org/repo/packages/graylog-sidecar-repository_1-5_all.deb && sudo dpkg -i graylog-sidecar-repository_1-5_all.deb && sudo apt-get update && sudo apt-get install graylog-sidecar
+```
+
+Download/install [filebeat](https://www.elastic.co/beats/filebeat) and [auditbeat](https://www.elastic.co/beats/auditbeat):
+
+```
+wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add - && echo "deb https://artifacts.elastic.co/packages/8.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-8.x.list && sudo apt-get update && sudo apt-get install filebeat auditbeat
+```
+
+---
+🗒️ **NOTE**
+
+Because Graylog Sidecar will manage the above collectors (e.g. filebeat, auditbeat), the services should be left in a disabled state. This is the default state, but noting here that you should not enable the services.
+
+---
+
+Set Graylog API URL:
+
+```
+echo -ne "Enter Graylog API\nExample: http://hostname.domain.tld:port/api/\nNOTE: must include trailing slash / at end\nAPI Url: " && tmp=$(head -1 </dev/stdin | sed -r 's/\//\\\//g') && sudo sed -i "s/.*server_url:.*/server_url: \"$tmp\"/g" /etc/graylog/sidecar/sidecar.yml
+```
+
+Set Graylog API Token:
+
+```
+echo -n "Enter Graylog API Token: " && tmp=$(head -1 </dev/stdin) && sudo sed -i "s/.*server_api_token:.*/server_api_token: \"$tmp\"/g" /etc/graylog/sidecar/sidecar.yml
+```
+
+Install, Enable and Start Graylog-Sidecar service:
+
+```
+sudo graylog-sidecar -service install
+sudo systemctl enable graylog-sidecar
+sudo systemctl start graylog-sidecar
+```
+
