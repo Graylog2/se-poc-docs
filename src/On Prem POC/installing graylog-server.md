@@ -84,7 +84,7 @@ The below command will set graylog-server to use 2GB of HEAP.
 ---
 
 ```sh
-sudo sed 's/-Xmx[0-9]\+g /-Xmx2g /g' /etc/default/graylog-server && sudo sed 's/-Xms[0-9]\+g /-Xms2g /g' /etc/default/graylog-server
+sudo sed -i 's/-Xmx[0-9]\+g /-Xmx2g /g' /etc/default/graylog-server && sudo sed -i 's/-Xms[0-9]\+g /-Xms2g /g' /etc/default/graylog-server
 
 ```
 
