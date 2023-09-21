@@ -9,7 +9,7 @@ The following steps must be completed on a linux server. This can be a virtual s
 
 ## Introduction
 
-This page will provide instructions for how to install the Graylog Forwarder. For more information about the Graylog Forwarder, see [Forwarder](https://go2docs.graylog.org/5-0/getting_in_log_data/forwarder.html) via our docs site.
+This page will provide instructions for how to install the Graylog Forwarder. For more information about the Graylog Forwarder, see [Forwarder](https://go2docs.graylog.org/5-1/getting_in_log_data/forwarder.html) via our docs site.
 
 ## Prerequisites
 
