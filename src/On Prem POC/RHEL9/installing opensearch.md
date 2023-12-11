@@ -160,7 +160,7 @@ Should return something like:
   "cluster_uuid" : "Lfir9JG5QkW2d9HSHzcGgw",
   "version" : {
     "distribution" : "opensearch",
-    "number" : "2.10.0",
+    "number" : "2.11.1",
     "build_type" : "rpm",
     "build_hash" : "eee49cb340edc6c4d489bcd9324dda571fc8dc03",
     "build_date" : "2023-09-20T23:54:59.957975456Z",
