@@ -9,7 +9,7 @@ The following steps are completed on the server/instance that will be used for O
 
 ## Introduction
 
-This page will provide instructions for how to install and configure a single node opensearch cluster on Alma Linux 9.
+This page will provide instructions for how to install and configure a single node OpenSearch cluster on RHEL 9 distros such as Rocky and Alma. While these instructions should work on any RHEL distro, they have only been tested and validated against Rocky 9 and Alma 9.
 
 Code blocks below can be copy/pasted into a terminal.
 
