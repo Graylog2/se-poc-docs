@@ -34,7 +34,7 @@ The Graylog 5 package `graylog-enterprise` is an all-in-one package for graylog-
 ---
 
 ```sh
-sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-5.1-repository_latest.rpm
+sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-5.2-repository_latest.rpm
 sudo yum -y install graylog-server
 
 ```
