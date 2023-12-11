@@ -39,13 +39,15 @@ sudo timedatectl set-timezone UTC
 
 ## Install
 
+NOTE: For Rocky, you will need to install wget: `sudo yum install wget`
+
 ```sh
 # Download OpenSearch repository (repo) file
 sudo wget -O /etc/yum.repos.d/opensearch-2.x.repo https://artifacts.opensearch.org/releases/bundle/opensearch/2.x/opensearch-2.x.repo
 
 ```
 
-For Alma 9 only:
+For Alma 9 and Rocky 9 only:
 ```sh
 # disable repo GPG check. This is required because the repo is signed with an outdated SHA-1 key which has been deprecated in RHEL9 linix distros.
 sudo sed -i "s/^gpgcheck=.*/gpgcheck=0/g" /etc/yum.repos.d/opensearch-2.x.repo
