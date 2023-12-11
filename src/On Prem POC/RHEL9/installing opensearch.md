@@ -9,7 +9,7 @@ The following steps are completed on the server/instance that will be used for O
 
 ## Introduction
 
-This page will provide instructions for how to install and configure a single node opensearch cluster on Alma Linux 9.
+This page will provide instructions for how to install and configure a single node OpenSearch cluster on RHEL 9 distros such as Rocky and Alma. While these instructions should work on any RHEL distro, they have only been tested and validated against Rocky 9 and Alma 9.
 
 Code blocks below can be copy/pasted into a terminal.
 
@@ -39,13 +39,15 @@ sudo timedatectl set-timezone UTC
 
 ## Install
 
+NOTE: For Rocky, you will need to install wget: `sudo yum install wget`
+
 ```sh
 # Download OpenSearch repository (repo) file
 sudo wget -O /etc/yum.repos.d/opensearch-2.x.repo https://artifacts.opensearch.org/releases/bundle/opensearch/2.x/opensearch-2.x.repo
 
 ```
 
-For Alma 9 only:
+For Alma 9 and Rocky 9 only:
 ```sh
 # disable repo GPG check. This is required because the repo is signed with an outdated SHA-1 key which has been deprecated in RHEL9 linix distros.
 sudo sed -i "s/^gpgcheck=.*/gpgcheck=0/g" /etc/yum.repos.d/opensearch-2.x.repo
@@ -64,6 +66,8 @@ Verify that we can list the packages and accept any prompts
 ```sh
 sudo yum list opensearch
 ```
+
+If prompted to import a GPG key, choose `y` (yes).
 
 Install
 ```sh
@@ -156,7 +160,7 @@ Should return something like:
   "cluster_uuid" : "Lfir9JG5QkW2d9HSHzcGgw",
   "version" : {
     "distribution" : "opensearch",
-    "number" : "2.10.0",
+    "number" : "2.11.1",
     "build_type" : "rpm",
     "build_hash" : "eee49cb340edc6c4d489bcd9324dda571fc8dc03",
     "build_date" : "2023-09-20T23:54:59.957975456Z",

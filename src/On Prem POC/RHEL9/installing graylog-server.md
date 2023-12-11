@@ -9,7 +9,7 @@ The following steps are completed on the server/instance that will be used for M
 
 ## Introduction
 
-This page will provide instructions for how to install Graylog (`graylog-server`) on Alma Linux 9.
+This page will provide instructions for how to install Graylog (`graylog-server`) on RHEL 9 distros such as Rocky and Alma. While these instructions should work on any RHEL distro, they have only been tested and validated against Rocky 9 and Alma 9.
 
 Code blocks below can be copy/pasted into a terminal.
 
@@ -34,7 +34,7 @@ The Graylog 5 package `graylog-enterprise` is an all-in-one package for graylog-
 ---
 
 ```sh
-sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-5.1-repository_latest.rpm
+sudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-5.2-repository_latest.rpm
 sudo yum -y install graylog-server
 
 ```
@@ -83,19 +83,7 @@ The below command will set graylog-server to use 2GB of HEAP.
 ---
 
 ```sh
-sudo sed -i 's/-Xmx[0-9]\+g /-Xmx2g /g' /etc/default/graylog-server && sudo sed -i 's/-Xms[0-9]\+g /-Xms2g /g' /etc/default/graylog-server
-
-```
-
-### Allow Graylog-server to bind to ports <1024
-
-By default, non root linux users cannot bind to network ports lower than 1024. This means that if graylog is installed via an Operating System Packages, graylog will be unable to start any inputs on ports lower than 1024, such as Syslog on port 514.
-
-To address this, you need to add AmbientCapabilities=CAP_NET_BIND_SERVICE to graylog’s service file.
-
-```
-sudo sed -i '/^LimitNOFILE=64000.*/a AmbientCapabilities=CAP_NET_BIND_SERVICE' /usr/lib/systemd/system/graylog-server.service
-sudo systemctl daemon-reload
+sudo sed -i 's/-Xmx[0-9]\+g /-Xmx2g /g' /etc/sysconfig/graylog-server && sudo sed -i 's/-Xms[0-9]\+g /-Xms2g /g' /etc/sysconfig/graylog-server
 
 ```
 
