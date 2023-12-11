@@ -67,6 +67,8 @@ Verify that we can list the packages and accept any prompts
 sudo yum list opensearch
 ```
 
+If prompted to import a GPG key, choose `y` (yes).
+
 Install
 ```sh
 # Install the x64 package using yum.
