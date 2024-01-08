@@ -6,9 +6,10 @@ This page will provide instructions for how to create a Graylog Sidecar configur
 
 ## Prerequisites
 
-* Graylog Sidecar installed on at least 1 endpoint
+* Graylog 5.2 (or later)
+* Graylog Sidecar **1.5** (or later) installed on at least 1 endpoint
 
-## Create Configuration
+## Edit Existing Default Sidecar Configuration
 
 A Sidecar configuration allows you to configure a log collector on the remote device where Graylog Sidecar is installed and running.
 
@@ -19,16 +20,19 @@ A configuration comprises 2 main parts:
 2. Configuration
     * Configuration text that is used to configure the collector
 
-To Create a configuration:
+Graylog now includes default configurations.
+
+To edit the default configuration:
 
 1. Via your Graylog web console, navigate to `System/Sidecars`
 2. Click on `Configuration` (Towards the top right of page)
-3. Fill out fields:
-    * Name - Name of collector configuration
-    * Collector: `Winlogbeat on Windows`
-    * Configuration - see below, copy and paste text
-4. Click `Create` at bottom of page to save this configuration
+3. Type `default` in the 'Find configurations' search box
+    * ![image](img/graylog-sidecar-config-search-default.png)
+4. Click `Edit` on the config you would like to edit.
+5. Make changes
+6. Click `Update configuration` to save changes.
 
+NOTE: Editing a Sidecar Configuration will apply those changes to all sidecars where that configuration is applied. For example, if you have two sidecars, both with the `default` tag, and you edit the default configuration, those edits will be applied to both sidecars.
 
 ### Sample Winlogbeat configuration to be used with Graylog Sidecar:
 
@@ -115,16 +119,4 @@ winlogbeat.event_logs:
 
 ## Assign Configuration to Sidecar
 
-Now that you have a configuration created, you can assign it to a sidecar.
-
-1. Via your Graylog web console, navigate to `System/Sidecars`
-2. Click on `Administration` (Towards the top right of page)
-3. On This page: find the sidecar you wish to assign your configuration to
-    * Click the checkbox for winlogbeat
-    * ![image](img/graylog-sidecar-config-assign-checkbox.png)
-4. Click Configure
-    * ![image](img/graylog-sidecar-config-assign-configure.png)
-5. Click on the config you wish to assign (e.g. the one just created)
-6. Click `Confirm` on the dialog box that appears
-
-This will apply the configuration immediately and start the applicable collector on the remote machine.
+If you have installed Sidecar 1.5 and Graylog 5.2, the default config is automatically assigned.
