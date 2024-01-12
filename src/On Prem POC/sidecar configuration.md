@@ -63,6 +63,7 @@ winlogbeat.event_logs:
 
   # Account login: Successful, Failed, logged off, loggon using explicit credentials
   - name: Security
+    id: account_login
     event_id: 4616, 4624, 4625, 4634, 4647, 4648
     level: info
     ignore_older: 48h
@@ -71,14 +72,16 @@ winlogbeat.event_logs:
 
 # Active Directory Monitoring: User account created, A user account was enabled, An attempt was made to change the password of an account, A user account was disabled,A user account was changed, A user account was locked out,A user account was unlocked
   - name: Security
+    id: ad_mon_user_created
     event_id:  4720-4727
     level: info
     ignore_older: 48h
     provider:
       - Microsoft-Windows-Security-Auditing
 
-# Active directory Monitoring Group:A user was added to a privileged global group, 	A user was added to a privileged local group, A user was added to a privileged universal group, A privileged local group was modified, A privileged global group was modified, A privileged universal group was modified
+# Active directory Monitoring Group:A user was added to a privileged global group, A user was added to a privileged local group, A user was added to a privileged universal group, A privileged local group was modified, A privileged global group was modified, A privileged universal group was modified
   - name: Security
+    id:  ad_mon_group
     event_id:   4728, 4729, 4730, 4731, 4732, 4733, 4734, 4735, 4737, 4738, 4740-4743, 4754-4758, 4764, 4767, 4769
     level: info
     ignore_older: 48h
@@ -87,6 +90,7 @@ winlogbeat.event_logs:
 
  # Active directory Kerberos:A Kerberos authentication ticket request failed
   - name: Security
+    id: ad_krb
     event_id:   4770-4773
     level: info
     ignore_older: 48h
@@ -95,6 +99,7 @@ winlogbeat.event_logs:
    
    # Active directory RDP: 
   - name: Security
+    id: ad_rdp
     event_id:  1024, 1100, 1101, 1102, 1103, 1104, 1149, 98, 131, 21, 22, 25 
     level: info
     ignore_older: 48h
