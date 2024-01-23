@@ -9,7 +9,13 @@ The following steps are completed on the server/instance that will be used for M
 
 ## Introduction
 
-This page will provide instructions for how to install Graylog (`graylog-server`) on Ubuntu **22**.04 LTS.
+This page will provide instructions for how to install Graylog on Ubuntu **22**.04 LTS.
+
+Server Recommendations:
+
+| Server Role       | CPU Cores | RAM  |
+| ----------------- | --------- | ---- |
+| Graylog/MongoDB   | 8         | 16GB |
 
 Code blocks below can be copy/pasted into a terminal.
 

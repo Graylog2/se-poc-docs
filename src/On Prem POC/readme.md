@@ -8,3 +8,9 @@ The documents should be followed in this order:
 2. [Installing MongoDB](installing%20mongodb.md)
 3. [Installing Graylog Server](installing%20graylog-server.md)
 
+Server Recommendations:
+
+| Server Role       | CPU Cores | RAM  |
+| ----------------- | --------- | ---- |
+| Graylog/MongoDB   | 8         | 16GB |
+| OpenSearch        | 8         | 24GB |
