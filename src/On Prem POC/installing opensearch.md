@@ -66,9 +66,9 @@ sudo touch /etc/cloud/cloud-init.disabled
 
 ```sh
 # Download package file
-wget https://artifacts.opensearch.org/releases/bundle/opensearch/2.5.0/opensearch-2.5.0-linux-x64.deb
+wget https://artifacts.opensearch.org/releases/bundle/opensearch/2.11.1/opensearch-2.11.1-linux-x64.deb
 # Install package file
-sudo dpkg -i opensearch-2.5.0-linux-x64.deb
+sudo dpkg -i opensearch-2.11.1-linux-x64.deb
 # set default value for heap variable
 tmpheap=1
 ```
@@ -154,12 +154,12 @@ Should return something like:
   "cluster_uuid" : "<uuid>",
   "version" : {
     "distribution" : "opensearch",
-    "number" : "2.5.0",
+    "number" : "2.11.0",
     "build_type" : "deb",
-    "build_hash" : "b8a8b6c4d7fc7a7e32eb2cb68ecad8057a4636ad",
-    "build_date" : "2023-01-18T23:48:43.426713304Z",
+    "build_hash" : "6b1986e964d440be9137eba1413015c31c5a7752",
+    "build_date" : "2023-11-29T21:43:44.221253956Z",
     "build_snapshot" : false,
-    "lucene_version" : "9.4.2",
+    "lucene_version" : "9.7.0",
     "minimum_wire_compatibility_version" : "7.10.0",
     "minimum_index_compatibility_version" : "7.0.0"
   },
