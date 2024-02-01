@@ -65,12 +65,17 @@ sudo touch /etc/cloud/cloud-init.disabled
 ## Install
 
 ```sh
-# Download package file
-wget https://artifacts.opensearch.org/releases/bundle/opensearch/2.11.1/opensearch-2.11.1-linux-x64.deb
-# Install package file
-sudo dpkg -i opensearch-2.11.1-linux-x64.deb
+# verify prereqs are present
+sudo apt-get update && sudo apt-get -y install lsb-release ca-certificates curl gnupg2
+# download signing key
+curl -o- https://artifacts.opensearch.org/publickeys/opensearch.pgp | sudo gpg --dearmor --batch --yes -o /usr/share/keyrings/opensearch-keyring
+# create repository file
+echo "deb [signed-by=/usr/share/keyrings/opensearch-keyring] https://artifacts.opensearch.org/releases/bundle/opensearch/2.x/apt stable main" | sudo tee /etc/apt/sources.list.d/opensearch-2.x.list
+# install opensearch
+sudo apt-get update && apt-get -y install opensearch
 # set default value for heap variable
 tmpheap=1
+
 ```
 
 ## Configure
