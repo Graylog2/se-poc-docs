@@ -128,6 +128,7 @@ Continue with these commands:
 sudo sed -i "s/^-Xmx[0-9]\+g/-Xmx${tmpheap}g/g" /etc/opensearch/jvm.options && sudo sed -i "s/^-Xms[0-9]\+g/-Xms${tmpheap}g/g" /etc/opensearch/jvm.options
 
 # Configure the kernel parameters at runtime
+# See https://opensearch.org/docs/latest/install-and-configure/install-opensearch/index/#important-settings
 sudo sysctl -w vm.max_map_count=262144
 echo 'vm.max_map_count=262144' | sudo tee -a /etc/sysctl.conf
 
