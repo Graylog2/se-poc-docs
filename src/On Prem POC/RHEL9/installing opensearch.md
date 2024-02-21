@@ -97,7 +97,8 @@ network.host: 0.0.0.0
 http.port: 9200
 discovery.type: single-node
 action.auto_create_index: false
-plugins.security.disabled: true" | sudo tee /etc/opensearch/opensearch.yml
+plugins.security.disabled: true
+indices.query.bool.max_clause_count: 32768" | sudo tee /etc/opensearch/opensearch.yml
 
 ```
 
