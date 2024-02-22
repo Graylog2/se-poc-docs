@@ -72,7 +72,20 @@ curl -o- https://artifacts.opensearch.org/publickeys/opensearch.pgp | sudo gpg -
 # create repository file
 echo "deb [signed-by=/usr/share/keyrings/opensearch-keyring] https://artifacts.opensearch.org/releases/bundle/opensearch/2.x/apt stable main" | sudo tee /etc/apt/sources.list.d/opensearch-2.x.list
 # install opensearch
-sudo apt-get update && apt-get -y install opensearch
+sudo apt-get update && sudo apt-get -y install opensearch
+
+## Fix folder permissions
+# product dir
+sudo chown -R opensearch:opensearch /usr/share/opensearch
+# config dir
+sudo chown -R opensearch:opensearch /etc/opensearch
+# log dir
+sudo chown -R opensearch:opensearch /var/log/opensearch
+# data dir
+sudo chown -R opensearch:opensearch /var/lib/opensearch
+# pid dir
+sudo chown -R opensearch:opensearch /var/run/opensearch
+
 # set default value for heap variable
 tmpheap=1
 
