@@ -65,7 +65,7 @@ Continuing OpenSearch installation:
 
 Verify that we can list the packages and accept any prompts
 ```sh
-sudo yum list opensearch
+sudo yum list opensearch -y
 ```
 
 If prompted to import a GPG key, choose `y` (yes).
