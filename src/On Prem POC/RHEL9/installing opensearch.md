@@ -22,11 +22,14 @@ sudo whoami
 
 ```
 
-Upgrade existing packages to latest versions. Ensure we start from a clean and updated state.
+Upgrade existing packages to latest versions. Ensure we start from a clean and updated state. Also install an needed prerequisites.
 
 ```sh
 # Housekeeping, Upgrade/update all existing Ubuntu Server packages
-sudo yum update
+sudo yum update -y
+sudo dnf config-manager --set-enabled crb
+sudo dnf install -y epel-release
+sudo yum install -y wget pwgen
 ```
 
 After update, continue with these commands:
@@ -39,8 +42,7 @@ sudo timedatectl set-timezone UTC
 
 ## Install
 
-NOTE: For Rocky, you will need to install wget: `sudo yum install wget`
-
+Install OpenSearch:
 ```sh
 # Download OpenSearch repository (repo) file
 sudo wget -O /etc/yum.repos.d/opensearch-2.x.repo https://artifacts.opensearch.org/releases/bundle/opensearch/2.x/opensearch-2.x.repo
@@ -64,7 +66,7 @@ Continuing OpenSearch installation:
 
 Verify that we can list the packages and accept any prompts
 ```sh
-sudo yum list opensearch
+sudo yum list opensearch -y
 ```
 
 If prompted to import a GPG key, choose `y` (yes).
@@ -72,7 +74,7 @@ If prompted to import a GPG key, choose `y` (yes).
 Install
 ```sh
 # Install the x64 package using yum.
-sudo yum -y install opensearch.x86_64
+sudo OPENSEARCH_INITIAL_ADMIN_PASSWORD=$(pwgen 32 1 -ny) yum -y install opensearch.x86_64
 
 # set default value for heap variable
 tmpheap=1
