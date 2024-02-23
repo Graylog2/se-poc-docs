@@ -39,10 +39,11 @@ sudo timedatectl set-timezone UTC
 
 ## Install
 
-NOTE: For Rocky, you will need to install wget: `sudo yum install wget`
-
+Install OpenSearch:
 ```sh
 # Download OpenSearch repository (repo) file
+# NOTE: For Rocky, you will need to install wget:
+sudo yum install -y wget
 sudo wget -O /etc/yum.repos.d/opensearch-2.x.repo https://artifacts.opensearch.org/releases/bundle/opensearch/2.x/opensearch-2.x.repo
 
 ```
