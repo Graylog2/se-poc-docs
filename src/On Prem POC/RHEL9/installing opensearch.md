@@ -26,7 +26,7 @@ Upgrade existing packages to latest versions. Ensure we start from a clean and u
 
 ```sh
 # Housekeeping, Upgrade/update all existing Ubuntu Server packages
-sudo yum update
+sudo yum update -y
 ```
 
 After update, continue with these commands:
