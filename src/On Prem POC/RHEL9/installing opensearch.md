@@ -22,14 +22,11 @@ sudo whoami
 
 ```
 
-Upgrade existing packages to latest versions. Ensure we start from a clean and updated state. Also install an needed prerequisites.
+Upgrade existing packages to latest versions. Ensure we start from a clean and updated state.
 
 ```sh
 # Housekeeping, Upgrade/update all existing Ubuntu Server packages
 sudo yum update -y
-sudo dnf config-manager --set-enabled crb
-sudo dnf install -y epel-release
-sudo yum install -y wget pwgen
 ```
 
 After update, continue with these commands:
