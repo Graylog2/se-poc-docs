@@ -45,7 +45,7 @@ sudo timedatectl set-timezone UTC
 Install OpenSearch:
 ```sh
 # Download OpenSearch repository (repo) file
-sudo wget -O /etc/yum.repos.d/opensearch-2.x.repo https://artifacts.opensearch.org/releases/bundle/opensearch/2.x/opensearch-2.x.repo
+sudo curl -o /etc/yum.repos.d/opensearch-2.x.repo https://artifacts.opensearch.org/releases/bundle/opensearch/2.x/opensearch-2.x.repo
 
 ```
 
