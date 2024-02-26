@@ -22,14 +22,11 @@ sudo whoami
 
 ```
 
-Upgrade existing packages to latest versions. Ensure we start from a clean and updated state. Also install an needed prerequisites.
+Upgrade existing packages to latest versions. Ensure we start from a clean and updated state.
 
 ```sh
 # Housekeeping, Upgrade/update all existing Ubuntu Server packages
 sudo yum update -y
-sudo dnf config-manager --set-enabled crb
-sudo dnf install -y epel-release
-sudo yum install -y wget pwgen
 ```
 
 After update, continue with these commands:
@@ -45,7 +42,7 @@ sudo timedatectl set-timezone UTC
 Install OpenSearch:
 ```sh
 # Download OpenSearch repository (repo) file
-sudo wget -O /etc/yum.repos.d/opensearch-2.x.repo https://artifacts.opensearch.org/releases/bundle/opensearch/2.x/opensearch-2.x.repo
+sudo curl -o /etc/yum.repos.d/opensearch-2.x.repo https://artifacts.opensearch.org/releases/bundle/opensearch/2.x/opensearch-2.x.repo
 
 ```
 
@@ -74,7 +71,7 @@ If prompted to import a GPG key, choose `y` (yes).
 Install
 ```sh
 # Install the x64 package using yum.
-sudo OPENSEARCH_INITIAL_ADMIN_PASSWORD=$(pwgen 32 1 -ny) yum -y install opensearch.x86_64
+sudo OPENSEARCH_INITIAL_ADMIN_PASSWORD=$(tr -dc A-Z-a-z-0-9_@#%^-_=+ < /dev/urandom  | head -c${1:-32}) yum -y install opensearch.x86_64
 
 # set default value for heap variable
 tmpheap=1
