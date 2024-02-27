@@ -9,7 +9,7 @@ The following steps are completed on the server/instance that will be used for O
 
 ## Introduction
 
-This page will provide instructions for how to install and configure a single node OpenSearch cluster on RHEL 9 distros such as Rocky and Alma. While these instructions should work on any RHEL distro, they have only been tested and validated against Rocky 9 and Alma 9.
+This page will provide instructions for how to install and configure a single node OpenSearch cluster on RHEL 9 distros such as Rocky, Alma, and RHEL. While these instructions should work on any RHEL distro, they have only been tested and validated against Rocky 9, Alma 9, and RHEL 9.
 
 Code blocks below can be copy/pasted into a terminal.
 
@@ -61,14 +61,6 @@ sudo rpm --import https://artifacts.opensearch.org/publickeys/opensearch.pgp
 
 Continuing OpenSearch installation:
 
-Verify that we can list the packages and accept any prompts
-```sh
-sudo yum list opensearch -y
-```
-
-If prompted to import a GPG key, choose `y` (yes).
-
-Install
 ```sh
 # Install the x64 package using yum.
 sudo OPENSEARCH_INITIAL_ADMIN_PASSWORD=$(tr -dc A-Z-a-z-0-9_@#%^-_=+ < /dev/urandom  | head -c${1:-32}) yum -y install opensearch.x86_64
