@@ -66,7 +66,7 @@ sudo touch /etc/cloud/cloud-init.disabled
 
 ```sh
 # verify prereqs are present
-sudo apt-get update && sudo apt-get -y install lsb-release ca-certificates curl gnupg2 pwgen
+sudo apt-get update && sudo apt-get -y install lsb-release ca-certificates curl gnupg2
 # download signing key
 curl -o- https://artifacts.opensearch.org/publickeys/opensearch.pgp | sudo gpg --dearmor --batch --yes -o /usr/share/keyrings/opensearch-keyring
 # create repository file

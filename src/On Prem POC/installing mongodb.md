@@ -54,9 +54,6 @@ sudo shutdown -r now
 After reboot, continue with these commands:
 
 ```sh
-# Install Prereqs
-sudo apt install -y uuid-runtime pwgen
-
 # set timezone to UTC
 sudo timedatectl set-timezone UTC
 
