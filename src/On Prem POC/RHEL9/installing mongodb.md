@@ -32,10 +32,6 @@ sudo yum update
 After update, with these commands:
 
 ```sh
-# Install Prereqs
-sudo dnf -y install epel-release
-sudo yum -y install uuid pwgen
-
 # set timezone to UTC
 sudo timedatectl set-timezone UTC
 
