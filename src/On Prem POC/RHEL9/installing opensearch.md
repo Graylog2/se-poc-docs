@@ -61,14 +61,6 @@ sudo rpm --import https://artifacts.opensearch.org/publickeys/opensearch.pgp
 
 Continuing OpenSearch installation:
 
-Verify that we can list the packages and accept any prompts
-```sh
-sudo yum list opensearch -y
-```
-
-If prompted to import a GPG key, choose `y` (yes).
-
-Install
 ```sh
 # Install the x64 package using yum.
 sudo OPENSEARCH_INITIAL_ADMIN_PASSWORD=$(tr -dc A-Z-a-z-0-9_@#%^-_=+ < /dev/urandom  | head -c${1:-32}) yum -y install opensearch.x86_64
