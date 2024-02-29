@@ -64,14 +64,14 @@ sudo curl -o /etc/yum.repos.d/opensearch-2.x.repo https://artifacts.opensearch.o
 
 ```
 
-For Alma 9 and Rocky 9 only:
+For Alma 9, Rocky 9, RHEL 9 (and any other RHEL 9 based distro) only:
 ```sh
 # disable repo GPG check. This is required because the repo is signed with an outdated SHA-1 key which has been deprecated in RHEL9 linix distros.
 sudo sed -i "s/^gpgcheck=.*/gpgcheck=0/g" /etc/yum.repos.d/opensearch-2.x.repo
 
 ```
 
-For Alma 8 only:
+For RHEL 8 based distros only:
 ```sh
 # Import the public GNU Privacy Guard (GPG) key. This key verifies that your OpenSearch instance is signed. 
 sudo rpm --import https://artifacts.opensearch.org/publickeys/opensearch.pgp
