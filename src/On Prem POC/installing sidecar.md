@@ -71,6 +71,8 @@ Note in the above example we're using http instead of HTTPS. If you have configu
 
 ---
 
+For our published documentation, see https://go2docs.graylog.org/5-2/getting_in_log_data/graylog_sidecar.html#InstallationbyOS
+
 ### Silent/Automated Install
 
 You can also install Graylog Sidecar silently and/or an automated installation method, such as an Endpoint Management system that can distribute and install software remotely on endpoints.
@@ -83,6 +85,12 @@ NOTE: update the `SERVERURL` and `APITOKEN` arguments with the values applicable
 
 ```
 "graylog_sidecar_installer.exe" /S -SERVERURL=https://GRAYLOGSERVER.DOMAIN.COM/api -APITOKEN=YOURAPITOKEN
+```
+
+You can also specify tags when installing, using the `-TAGS=` argument:
+
+```
+"graylog_sidecar_installer.exe" /S -SERVERURL=https://GRAYLOGSERVER.DOMAIN.COM/api -APITOKEN=YOURAPITOKEN -TAGS=["example","IIS"]
 ```
 
 # Install - Linux
