@@ -19,11 +19,31 @@ Graylog Self-Managed:<br>![Graylog Sidecar used with Graylog Self-Managed](img/G
 ### API Token
 Before you can use Sidecar, you must first generate an API token that Sidecar can use to securely communicate with your graylog cluster.
 
-See [Graylog Sidecar: Step-by-step Guide](https://go2docs.graylog.org/5-1/getting_in_log_data/graylog_sidecar.html#StepbyStepGuide)
+Via your Graylog Web Interface:
+
+1. Navigate to System / **Sidecars**
+2. Follow the link for "Create or reuse a token for the *graylog-sidecar* user" ![Create or reuse a token for the graylog-sidecar user](img/graylog-sidecar-create-token-url.png)
+3. **Create** a token:
+    1. Input token name
+    2. Create Token
+    * ![Create Token](img/graylog-sidecar-create-token.png)
+    * NOTE: This token is only viewable on this page one time. Make sure to save this token somewhere that you can reference it in the future, such as a password manager. You can reuse this token for all of your sidecar installs.
 
 ### Beats Input
 
 Make sure you have a beats input created and started before continuing.
+
+Via your Graylog Web Interface:
+
+1. Navigate to System / **Inputs**
+2. Click on the **Select input** select box<br>![select input](img/input-beat-select-click.png)
+3. Type **beats** and select beats from the select menu<br>![type "beat" in select box](img/input-beat-type-beat.png)
+4. Click **Launch new input**<br>![Launch new input](img/input-beat-launch-new-input.png)
+5. Configure input:
+    * Check checkbox for **Global**. This will configure the input to run on ALL Graylog nodes.<br>![Global Input](img/input-beat-global.png)
+    * Input a title. This title can be anything. For example "Beats"
+    * Make sure you leave "Do not add Beats type as prefix" in its default, unchecked state<br>![Unchecked: Do not add Beats type as prefix](img/ubuntu-apt-do-not-add-prefix-unchecked.png)
+    * Click **Launch Input**
 
 # Install - Windows
 
@@ -51,6 +71,8 @@ Note in the above example we're using http instead of HTTPS. If you have configu
 
 ---
 
+For our published documentation, see https://go2docs.graylog.org/5-2/getting_in_log_data/graylog_sidecar.html#InstallationbyOS
+
 ### Silent/Automated Install
 
 You can also install Graylog Sidecar silently and/or an automated installation method, such as an Endpoint Management system that can distribute and install software remotely on endpoints.
@@ -63,6 +85,12 @@ NOTE: update the `SERVERURL` and `APITOKEN` arguments with the values applicable
 
 ```
 "graylog_sidecar_installer.exe" /S -SERVERURL=https://GRAYLOGSERVER.DOMAIN.COM/api -APITOKEN=YOURAPITOKEN
+```
+
+You can also specify tags when installing, using the `-TAGS=` argument:
+
+```
+"graylog_sidecar_installer.exe" /S -SERVERURL=https://GRAYLOGSERVER.DOMAIN.COM/api -APITOKEN=YOURAPITOKEN -TAGS=["example","IIS"]
 ```
 
 # Install - Linux
