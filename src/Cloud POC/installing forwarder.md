@@ -59,7 +59,7 @@ The code block below can be copy/pasted into a terminal.
 
 ```
 wget https://packages.graylog2.org/repo/packages/graylog-forwarder-repository_6-1_all.deb
-sudo dpkg -i graylog-forwarder-repository_5-1_all.deb
+sudo dpkg -i graylog-forwarder-repository_6-1_all.deb
 sudo apt-get update
 sudo apt-get install -y graylog-forwarder
 
