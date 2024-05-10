@@ -132,11 +132,4 @@ Set Graylog API Token:
 echo -n "Enter Graylog API Token: " && tmp=$(head -1 </dev/stdin) && sudo sed -i "s/.*server_api_token:.*/server_api_token: \"$tmp\"/g" /etc/graylog/sidecar/sidecar.yml
 ```
 
-Install, Enable and Start Graylog-Sidecar service:
-
-```
-sudo graylog-sidecar -service install
-sudo systemctl enable graylog-sidecar
-sudo systemctl start graylog-sidecar
-```
-
+The installer now automatically installs, enables, and starts the Graylog Sidecar (`graylog-sidecar`) Windows service.
