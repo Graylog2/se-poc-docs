@@ -35,7 +35,7 @@ Assumes housekeeping steps from [Installing MongoDB](installing%20mongodb.md#hou
 ---
 🗒️ **NOTE**
 
-The Graylog 5 package `graylog-enterprise` is an all-in-one package for graylog-server and its integration plugins (Enterprise Paid features for Graylog Operations and Graylog Security). It is installed instead of `graylog-server`, which is now used only for Graylog Open Source.
+The Graylog package `graylog-enterprise` is an all-in-one package for graylog-server and its integration plugins (Enterprise Paid features for Graylog Operations and Graylog Security). It is installed instead of `graylog-server`, which is now used only for Graylog Open Source.
 
 ---
 
