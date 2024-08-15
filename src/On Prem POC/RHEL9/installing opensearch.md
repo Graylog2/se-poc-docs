@@ -63,7 +63,7 @@ Continuing OpenSearch installation:
 
 ```sh
 # Install the x64 package using yum.
-sudo OPENSEARCH_INITIAL_ADMIN_PASSWORD=$(tr -dc A-Z-a-z-0-9_@#%^-_=+ < /dev/urandom  | head -c${1:-32}) yum -y install opensearch.x86_64
+sudo OPENSEARCH_INITIAL_ADMIN_PASSWORD=$(tr -dc A-Z-a-z-0-9_@#%^-_=+ < /dev/urandom  | head -c${1:-32}) yum -y install 'opensearch-2.15.0'
 
 # set default value for heap variable
 tmpheap=1
