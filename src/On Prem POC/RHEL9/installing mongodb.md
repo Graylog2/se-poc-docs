@@ -45,6 +45,10 @@ Install MongoDB
 # for reference, via https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/
 # Install MongoDB 6
 
+# Prevent startup error: vm.max_map_count is too low
+sudo sysctl -w vm.max_map_count=262144
+echo 'vm.max_map_count=262144' | sudo tee -a /etc/sysctl.conf
+
 echo "[mongodb-org-6.0]
 name=MongoDB Repository
 baseurl=https://repo.mongodb.org/yum/redhat/9/mongodb-org/6.0/x86_64/
