@@ -51,8 +51,8 @@ fields.gl2_source_collector: ${sidecar.nodeId}
 output.logstash:
    hosts: ["servername.domain.tld:5044"]
 path:
-  data: C:\Program Files\Graylog\sidecar\cache\winlogbeat\data
-  logs: C:\Program Files\Graylog\sidecar\logs
+  data: ${sidecar.spoolDir!"C:\\Program Files\\Graylog\\sidecar\\cache\\winlogbeat"}\data
+  logs: ${sidecar.spoolDir!"C:\\Program Files\\Graylog\\sidecar"}\logs
 tags:
  - windows
 
@@ -64,7 +64,7 @@ winlogbeat.event_logs:
   # Account login: Successful, Failed, logged off, loggon using explicit credentials
   - name: Security
     id: account_login
-    event_id: 4616, 4624, 4625, 4634, 4647, 4648
+    event_id: 4616, 4624, 4625, 4634, 4647, 4648, 4688
     level: info
     ignore_older: 48h
     provider:
@@ -91,7 +91,7 @@ winlogbeat.event_logs:
  # Active directory Kerberos:A Kerberos authentication ticket request failed
   - name: Security
     id: ad_krb
-    event_id:   4770-4773
+    event_id:   4770-4773, 4768, 4769
     level: info
     ignore_older: 48h
     provider:
@@ -101,6 +101,24 @@ winlogbeat.event_logs:
   - name: Security
     id: ad_rdp
     event_id:  1024, 1100, 1101, 1102, 1103, 1104, 1149, 98, 131, 21, 22, 25 
+    level: info
+    ignore_older: 48h
+    provider:
+      - Microsoft-Windows-Security-Auditing
+  
+  # Credential Manager
+  - name: Security
+    id: ad_cm
+    event_id: 5379
+    level: info
+    ignore_older: 48h
+    provider:
+      - Microsoft-Windows-Security-Auditing
+
+  # File Auditing
+  - name: Security
+    id: file_audit
+    event_id: 5145, 4656, 4658, 4660
     level: info
     ignore_older: 48h
     provider:
