@@ -68,11 +68,14 @@ Install MongoDB
 
 ```sh
 # for reference, via https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/
-# Install MongoDB 6
+# Install MongoDB 7
 
 # Prevent startup error: vm.max_map_count is too low
 sudo sysctl -w vm.max_map_count=262144
 echo 'vm.max_map_count=262144' | sudo tee -a /etc/sysctl.conf
+
+# Verify prereqs installed
+sudo apt install -y gnupg curl
 
 # for reference, via https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/
 curl -fsSL https://www.mongodb.org/static/pgp/server-7.0.asc | \
